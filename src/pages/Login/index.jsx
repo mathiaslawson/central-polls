@@ -10,7 +10,7 @@ function Index() {
        <Box 
        display='flex'
        justifyContent='space-between'
-       marginTop='5vh'
+       marginTop='0vh'
        padding='2rem'
        width='100%'
        >
