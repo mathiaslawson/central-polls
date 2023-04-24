@@ -1,102 +1,106 @@
-import React from 'react';
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  Input,
-  InputAdornment,
-  InputLabel,
-  Typography,
-  makeStyles,
-} from '@material-ui/core';
-import LockIcon from '@material-ui/icons/Lock';
-import Logo from './login.png';
+import {Box, useMediaQuery, Typography} from '@mui/material'
+import login from './login.png'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-    background: '#f2f2f2',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    maxWidth: '100%',
-    maxHeight: '70%',
-    objectFit: 'cover',
-    borderRadius: 8,
-    display: 'flex',
-  
-  marginLeft: '4rem'
-   
-  },
-  formContainer: {
-    maxWidth: 360,
-    margin: theme.spacing(0, 4),
-  },
-  logo: {
-    marginBottom: theme.spacing(2),
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    '& img': {
-      marginRight: theme.spacing(1),
-    },
-  },
-  form: {
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
 
-function Login() {
-  const classes = useStyles();
+function Index() {
+  const smallScreens = useMediaQuery('(min-width: 1200px)');
 
   return (
-    <Box className={classes.root}>
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <img src={Logo} alt="Login" className={classes.image} />
-        </Grid>
-        <Grid item xs={12} md={6} className={classes.formContainer}>
-          <Box className={classes.logo}>
-            <Typography variant="h5">My App</Typography>
-          </Box>
-          <Box className={classes.form}>
-            <FormControl fullWidth margin="normal">
-              <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input id="email" name="email" type="email" autoComplete="email" autoFocus />
-            </FormControl>
-            <FormControl fullWidth margin="normal">
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                endAdornment={
-                  <InputAdornment position="end">
-                    <LockIcon />
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              className={classes.submit}
+    <>
+       <Box 
+       display='flex'
+       justifyContent='space-between'
+       marginTop='5vh'
+       padding='2rem'
+       width='100%'
+       >
+        {/* left */}
+        <Box
+         display='flex'
+         justifyContent='center'
+         gap={smallScreens && '6rem'}
+         width='100%'
+         sx={smallScreens ? {display: 'flex'}: {display: 'grid'}}
+        >
+            <Box
+             display='grid'
+            marginLeft='4rem'
             >
-              Sign In
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
-  );
+              <Typography variant='h2' fontWeight='bolder' color='#8c1f1f' fontFamily='calibri' fontSize='4rem'>
+                  Login
+              </Typography>
+              <Typography variant='h3' fontFamily='calibri'>
+              If you don't have an account
+              you can <span style={{color: '#8c1f1f'}}>register here.</span>
+              </Typography>
+              <br />
+              <br />
+              <img src={login} alt='login image' style={smallScreens ? {width: '100%'}: {width: '80%'}}/>
+            </Box>
+            {/* right */}
+            <Box
+              display='grid'
+              justifyContent='center'
+              padding='4rem'
+              height='10vh'
+              gap='2rem'
+              marginTop={smallScreens && {marginTop: '10rem'}}
+            
+            >
+               <input style={!smallScreens ? {
+                padding: '1rem',
+                border: 'none',
+                borderRadius: '0.5rem',
+                borderStyle: 'solid',
+                borderColor: 'rgb(140,31,31)',
+                borderWidth: '0.02rem'
+              }: { 
+              padding: '1rem',
+              width: '150%',
+              border: 'none',
+              borderRadius: '0.5rem',
+              borderStyle: 'solid',
+              borderColor: 'rgb(140,31,31)',
+              borderWidth: '0.02rem',
+            }
+            } placeholder='Student ID'
+              >
+
+              </input>
+
+               <input style={!smallScreens ? {
+                padding: '1rem',
+               
+                border: 'none',
+                borderRadius: '0.5rem',
+                borderStyle: 'solid',
+                borderColor: 'rgb(140,31,31)',
+                borderWidth: '0.02rem'
+              }: { 
+              padding: '1rem',
+              width: '150%',
+              border: 'none',
+              borderRadius: '0.5rem',
+              borderStyle: 'solid',
+              borderColor: 'rgb(140,31,31)',
+              borderWidth: '0.02rem',
+            }
+            } placeholder='Student ID'
+              >
+
+              </input>
+             
+             
+              <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
+                Login
+              </button>
+             
+            </Box>
+
+            </Box>
+       </Box>
+    </>
+  )
 }
 
-export default Login;
+export default Index
