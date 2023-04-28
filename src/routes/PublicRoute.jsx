@@ -1,16 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
-const PublicRoute = ({ user, component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        !user ? <Component {...props} /> : <Redirect to={ROUTES.HOME} />
-      }
-    />
-  );
+const PublicRoute = ({ user, component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    component={ props =>
+      !user ? <Component {...props} /> : <Redirect to={ROUTES.HOME} />
+    }
+  />
+);
+
+const mapStateToProps = state => {
+  return { user: state.auth.user };
 };
 
-export default PublicRoute;
+export default connect(mapStateToProps)(PublicRoute);

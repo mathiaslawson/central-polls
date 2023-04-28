@@ -2,7 +2,7 @@ import {Box, useMediaQuery, Typography} from '@mui/material'
 import login from './login.png'
 
 
-function Index() {
+function Index({onChange, onSubmit}) {
   const smallScreens = useMediaQuery('(min-width: 1200px)');
 
   return (
@@ -45,9 +45,15 @@ function Index() {
               height='10vh'
               gap='2rem'
               marginTop={smallScreens && {marginTop: '10rem'}}
-            
+              onSubmit={onSubmit}
+              component='form'
             >
-               <input style={!smallScreens ? {
+             
+               <input 
+                onChange= {onChange}
+                name='email'
+                id='email'
+               style={!smallScreens ? {
                 padding: '1rem',
                 border: 'none',
                 borderRadius: '0.5rem',
@@ -63,12 +69,17 @@ function Index() {
               borderColor: 'rgb(140,31,31)',
               borderWidth: '0.02rem',
             }
-            } placeholder='Student ID'
+            } placeholder='Student Mail'
               >
 
               </input>
 
-               <input style={!smallScreens ? {
+               <input 
+               onChange= {onChange}
+               name='password'
+               id='password'
+               type='password'
+               style={!smallScreens ? {
                 padding: '1rem',
                
                 border: 'none',
@@ -85,7 +96,7 @@ function Index() {
               borderColor: 'rgb(140,31,31)',
               borderWidth: '0.02rem',
             }
-            } placeholder='Student ID'
+            } placeholder='Password'
               >
 
               </input>
@@ -94,7 +105,7 @@ function Index() {
               <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
                 Login
               </button>
-             
+              
             </Box>
 
             </Box>

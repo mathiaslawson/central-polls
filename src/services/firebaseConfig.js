@@ -1,11 +1,10 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyCFww1uUBu5h3MN9G-u4twExtZaiJluUas",
-    authDomain: "central-polls.firebaseapp.com",
-    projectId: "central-polls",
-    storageBucket: "central-polls.appspot.com",
-    messagingSenderId: "602750730585",
-    appId: "1:602750730585:web:d4f31efb03c9a086d14c48",
-    measurementId: "G-LNGDK87MKM"
-  };
+  apiKey: import.meta.env.VITE_APP_API_KEY,
+  authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_APP_ID,
+};
 
-  export default firebaseConfig;
+export default firebaseConfig;
