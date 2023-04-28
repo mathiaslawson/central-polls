@@ -43,7 +43,8 @@ class LoginInContainer extends Component {
       .then(success => {
         const user = success.user;
 
-        console.log('sign in')
+
+     
        
      const showToastMessage = () => {
           toast.success('Logging In', {
@@ -83,6 +84,7 @@ class LoginInContainer extends Component {
         <Login
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
+          error={this.state.error}
         />
         <ToastContainer />
       </>

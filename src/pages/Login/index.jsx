@@ -2,7 +2,7 @@ import {Box, useMediaQuery, Typography} from '@mui/material'
 import login from './login.png'
 
 
-function Index({onChange, onSubmit}) {
+function Index({onChange, onSubmit, error}) {
   const smallScreens = useMediaQuery('(min-width: 1200px)');
 
   return (
@@ -98,10 +98,13 @@ function Index({onChange, onSubmit}) {
             }
             } placeholder='Password'
               >
-
+              
               </input>
-             
-             
+
+              <Box>
+               {error}  
+              </Box> 
+            
               <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
                 Login
               </button>
