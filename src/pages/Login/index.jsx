@@ -101,10 +101,11 @@ function Index({onChange, onSubmit, error}) {
               
               </input>
 
-              <Box>
+            <Box display='flex' justifyContent='center'>
+              <Box width='50%'>
                {error}  
               </Box> 
-            
+              </Box>            
               <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
                 Login
               </button>
