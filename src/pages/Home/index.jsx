@@ -1,7 +1,14 @@
+import {Box} from '@mui/material'
+
 
 function index() {
   return (
-    <div>Home</div>
+    <>
+       <Box>
+            Home
+
+       </Box>    
+    </>
   )
 }
 

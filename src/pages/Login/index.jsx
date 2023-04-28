@@ -10,7 +10,7 @@ function Index({onChange, onSubmit}) {
        <Box 
        display='flex'
        justifyContent='space-between'
-       marginTop='0vh'
+       marginTop='4vh'
        padding='2rem'
        width='100%'
        >
@@ -18,24 +18,24 @@ function Index({onChange, onSubmit}) {
         <Box
          display='flex'
          justifyContent='center'
-         gap={smallScreens && '6rem'}
+         gap={smallScreens && '0rem'}
          width='100%'
          sx={smallScreens ? {display: 'flex'}: {display: 'grid'}}
         >
             <Box
              display='grid'
-            marginLeft='4rem'
+            
             >
-              <Typography variant='h2' fontWeight='bolder' color='#8c1f1f' fontFamily='calibri' fontSize='4rem'>
+              <Typography variant='h6' fontWeight='bolder' color='#8c1f1f' fontFamily='calibri' fontSize='3rem'>
                   Login
               </Typography>
-              <Typography variant='h3' fontFamily='calibri'>
+              <Typography variant='h4' fontFamily='calibri'>
               If you don't have an account
               you can <span style={{color: '#8c1f1f'}}>register here.</span>
               </Typography>
               <br />
               <br />
-              <img src={login} alt='login image' style={smallScreens ? {width: '100%'}: {width: '80%'}}/>
+              <img src={login} alt='login image' style={smallScreens ? {width: '90%'}: {width: '70%', marginLeft: '3rem'}}/>
             </Box>
             {/* right */}
             <Box
