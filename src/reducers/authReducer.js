@@ -1,4 +1,4 @@
-import {LOGIN} from '../constants/actionTypes'
+import {LOGIN, REGISTER} from '../constants/actionTypes'
 
 const INITIAL_STATE = {
     user: null
@@ -7,6 +7,9 @@ const INITIAL_STATE = {
 const authReducer = (state = INITIAL_STATE, action) =>{
     switch (action.type){
         case LOGIN: 
+        return {...state, user: action.payload};
+
+        case REGISTER: 
         return {...state, user: action.payload};
 
      
