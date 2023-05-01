@@ -100,12 +100,13 @@ function index() {
                 value={selected}
                 onChange={handleChange}
                 style={{
-                  padding: '1rem',
+                  height:'3rem',
                   border: 'none',
                   borderRadius: '0.5rem',
                   borderStyle: 'solid',
                   borderColor: 'rgb(140,31,31)',
-                  borderWidth: '0.02rem'
+                  borderWidth: '0.02rem',
+                  padding: '1rem'
                 }}
               >
                 {
