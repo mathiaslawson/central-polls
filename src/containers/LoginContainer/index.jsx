@@ -3,10 +3,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {Login as LoginAction} from '../../actions';
 import { withFirebase } from '../../services/index';
-
+import {withRouter} from 'react-router-dom'
 import Alert from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
-
 import Login from '../../pages/Login'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,18 +15,30 @@ import 'react-toastify/dist/ReactToastify.css';
 import {signInWithEmailAndPassword} from 'firebase/auth'
 
 
+// const history = useHistory()
+// history.push('/candidates')
+
+
 class LoginInContainer extends Component {
   state = {
     email: '',
     password: '',
     error: null,
     loading: false,
+
   };
 
+
+  routeChange = () =>{
+    let path = '/candidates';
+    // let history = useHistory();
+    // history.push(path)
+  }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  
 
   handleSubmit = e => {
     e.preventDefault();
@@ -43,8 +54,8 @@ class LoginInContainer extends Component {
       .then(success => {
         const user = success.user;
 
-
      
+
        
      const showToastMessage = () => {
           toast.success('Logging In', {
@@ -54,14 +65,16 @@ class LoginInContainer extends Component {
 
       showToastMessage()
 
+   
+
       return firebase.getUser(user.uid)
       })
       .then( querySnapshot => {
         const userData = querySnapshot.data()        
-        SignInAction(userData);
-  
-        
+        LoginAction(userData);
+   
       })
+
       .catch(error => {
       const errorMessage = error.message;  
   

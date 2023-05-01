@@ -8,12 +8,15 @@ import { withFirebase } from '../../services';
 
 class App extends Component {
   render() {
+
+    console.log(this.props.user + '1')
       
     return (
      
       <Fragment>
        
         <Routes />
+
         
       </Fragment>
      

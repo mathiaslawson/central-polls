@@ -3,9 +3,11 @@ import * as ROUTES from '../constants/routes';
 import Login from '../pages/Login'
 import Home from '../pages/Home'
 import Register from '../pages/Register'
+import Candidates from '../pages/Candidates'
 import PublicRoute from './PublicRoute.jsx';
 import PrivateRoute from './PrivateRoute';
 import LoginContainer from '../containers/LoginContainer';
+import RegisterContainer from '../containers/RegisterContainer';
 
 
 
@@ -13,9 +15,10 @@ import LoginContainer from '../containers/LoginContainer';
 const Routes = () => {
   return (
     <Switch>
-      <PublicRoute path={ROUTES.REGISTER} component={Register} />
+      <PrivateRoute path={ROUTES.CANDIDATES} component={Candidates} />
+      <PublicRoute path={ROUTES.REGISTER} component={RegisterContainer} />
       <PublicRoute path={ROUTES.LOGIN} component={LoginContainer} />
-      <PublicRoute path={ROUTES.HOME} component={Home} />
+      <PublicRoute path={ROUTES.HOME} component={Home} /> 
     </Switch >
   );
 };

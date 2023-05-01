@@ -4,23 +4,25 @@ import girl from '../../assets/LandingPage/img1.png'
 
 
 function index() {
-  const smallScreens = useMediaQuery('(min-width: 1200px)')
+  const smallScreens = useMediaQuery('(min-width: 800px)')
 
   return (
     <>
-       <Box padding='1rem'>
+       <Box padding='0rem'>
             <Box height='100vh' display='flex' justifyContent='space-between' justifySelf='center' position='relative' >
               <Box margin='4rem 4rem ' width='90%' >
-                <Typography fontSize='3rem' width='max-content' fontWeight='bold'>
+                <Typography fontSize={smallScreens ? '3rem': '2rem'} width='90%' fontWeight='bold'>
                   Fast, Secured and
                 </Typography>
-                <Typography fontSize='3rem' width='max-content' fontWeight='bold' marginTop='-0.4rem'>
+                <Typography fontSize={smallScreens ? '3rem': '2rem'} width='90%' fontWeight='bold' marginTop='-0.4rem'>
                   Accessible Voting System
                 </Typography>
                 <Typography variant='h6' fontWeight='lighter' marginTop='2rem' width='90%' color='gray'>
                 Voting made easy for you.This website is designed to ensure
                 a secured voting session for every student.
                 </Typography>
+
+                <br />
 
                 <button
               style={{
