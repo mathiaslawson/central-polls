@@ -3,23 +3,23 @@ import register from './register.png'
 import { useState } from 'react';
 
 
-function index() {
+function Index({onSubmit, onChange}) {
 
   const smallScreens = useMediaQuery('(min-width: 1200px)')
 
   const depts = [
     { value: '', text: 'Select your department' },
-    { value: 'CSC', text: 'CSC' },
-    { value: 'Arts and Social Department(MIOTSO)', text: 'Arts and Social Department(MIOTSO)' },
-    { value: 'ATHE', text: 'ATHE' },
-    { value: 'LAW', text: 'LAW' },
-    { value: 'Central Business School', text: 'Central Business School' },
-    { value: 'School of Architecture and Design', text: 'School of Architecture and Design' },
-    { value: 'School of Medicine And Health', text: 'School of Medicine And Health' },
-    { value: 'School of Pharmacy', text: 'School of Pharmacy' },
-    { value: 'Theology and Mission', text: 'Theology and Mission' },
-    { value: 'Vision and Life', text: 'Vision and Life' },
-    { value: 'School of Engineering and Technology', text: 'School of Engineering and Technology' }
+    { value: 'CSC', text: 'CSC', id: "CSC" },
+    { value: 'Arts and Social Department(MIOTSO)', text: 'Arts and Social Department(MIOTSO)', id: 'AND' },
+    { value: 'ATHE', text: 'ATHE', id: 'ATHE' },
+    { value: 'LAW', text: 'LAW', id: 'LAW' },
+    { value: 'Central Business School', text: 'Central Business School', id: 'CBS' },
+    { value: 'School of Architecture and Design', text: 'School of Architecture and Design', id: 'SAD' },
+    { value: 'School of Medicine And Health', text: 'School of Medicine And Health', id: 'SMH' },
+    { value: 'School of Pharmacy', text: 'School of Pharmacy', id: 'SOF' },
+    { value: 'Theology and Mission', text: 'Theology and Mission', id: 'TAH' },
+    { value: 'Vision and Life', text: 'Vision and Life', id: "VAL" },
+    { value: 'School of Engineering and Technology', text: 'School of Engineering and Technology', id: 'SET' }
   ]
 
   const [selected, setSelected] = useState(depts[0].value)
@@ -60,11 +60,12 @@ function index() {
             gap='2rem'
             component='form'
             sx={smallScreens?{width:'22%'}:{width:'70%'}}
+            onSubmit={onSubmit}
           >
             <input
-              // onChange={onChange}
-              name='idNumber'
-              id='idNumber'
+               onChange={onChange}
+              name='indexNumber'
+              id='indexNumber'
               placeholder='Enter your ID number'
               style={{
                 padding: '1rem',
@@ -81,9 +82,9 @@ function index() {
             ></input>
 
             <input
-              // onChange={onChange}
-              name='email'
-              id='email'
+              onChange={onChange}
+              name='schoolMail'
+              id='schoolMail'
               placeholder='Enter your student e-mail'
               style={{
                 padding: '1rem',
@@ -98,7 +99,8 @@ function index() {
             <FormControl>
               <Select
                 value={selected}
-                onChange={handleChange}
+                onChange={onChange}
+                name = 'department'
                 style={{
                   height:'3rem',
                   border: 'none',
@@ -112,7 +114,7 @@ function index() {
                 {
                   depts.map((dept) => {
                     return (
-                      <MenuItem key={dept.value} value={dept.value}>{dept.text}</MenuItem>
+                      <MenuItem key={dept.value} value={dept.value} id={dept.id}>{dept.text}</MenuItem>
                     )
                   })
                 }
@@ -121,7 +123,7 @@ function index() {
             </FormControl>
 
             <input
-              // onChange={onChange}
+               onChange={onChange}
               name='password'
               id='password'
               type='password'
@@ -138,9 +140,9 @@ function index() {
             </input>
 
             <input
-              // onChange={onChange}
-              name='Repassword'
-              id='password'
+              onChange={onChange}
+              name='confirmPassword'
+              id='confirmPassword'
               type='password'
               placeholder='Re-enter your Password'
               style={{
@@ -186,4 +188,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

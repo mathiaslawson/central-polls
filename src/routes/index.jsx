@@ -1,8 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
-import Login from '../pages/Login'
 import Home from '../pages/Home'
-import Register from '../pages/Register'
 import Candidates from '../pages/Candidates'
 import PublicRoute from './PublicRoute.jsx';
 import PrivateRoute from './PrivateRoute';

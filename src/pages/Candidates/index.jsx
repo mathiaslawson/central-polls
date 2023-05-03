@@ -1,8 +1,14 @@
 import React from 'react'
 
 function Candidates() {
+
+  console.log('showsome')
+
   return (
-    <div>Candidates</div>
+    <div>Candidateass
+
+      as
+    </div>
   )
 }
 

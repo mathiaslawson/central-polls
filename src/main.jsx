@@ -17,17 +17,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
      <Provider store={store}>
       <FirebaseContext.Provider value={new Firebase()}>
           <ThemeProviderWrapper>
-            <CssBaseline />
-          <div >
-            <main className='content'>
-              <Navbar />
+            <CssBaseline />   
+              <Navbar props={store}/>
           <Router>
             <App />
           </Router>
-          </main>
-          </div>
           </ThemeProviderWrapper>
           </FirebaseContext.Provider>
-          </Provider>        
+      </Provider>        
   </React.StrictMode>,
 )

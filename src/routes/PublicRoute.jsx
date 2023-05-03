@@ -7,12 +7,13 @@ const PublicRoute = ({ user, component: Component, ...rest }) => (
   <Route
     {...rest}
     component={ props =>
-      !user ? <Component {...props} /> : <Redirect to={ROUTES.HOME} />
+      !user ? <Component {...props} /> : <Redirect to={ROUTES.CANDIDATES} />
     }
   />
 );
 
 const mapStateToProps = state => {
+  
   return { user: state.auth.user };
 };
 

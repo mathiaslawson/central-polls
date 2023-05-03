@@ -1,9 +1,9 @@
 import {LOGIN} from '../constants/actionTypes'
 
-const Login = payload => {
+const Login = (user) => {
     return {
         type: LOGIN,
-        payload
+         payload: user
     }
 }
 

@@ -9,14 +9,8 @@ import Stack from '@mui/material/Stack'
 import Login from '../../pages/Login'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import store from '../../store';
 
-
-// different method
-import {signInWithEmailAndPassword} from 'firebase/auth'
-
-
-// const history = useHistory()
-// history.push('/candidates')
 
 
 class LoginInContainer extends Component {
@@ -28,13 +22,6 @@ class LoginInContainer extends Component {
 
   };
 
-
-  routeChange = () =>{
-    let path = '/candidates';
-    // let history = useHistory();
-    // history.push(path)
-  }
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -43,8 +30,7 @@ class LoginInContainer extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    console.log(this.state.email, this.state.password)
-
+   
     const { firebase, SignInAction } = this.props;
     console.log(this.props)
     const { email, password } = this.state;
@@ -54,9 +40,15 @@ class LoginInContainer extends Component {
       .then(success => {
         const user = success.user;
 
-     
-
+        const updatedState = store.getState()
+        console.log(updatedState)
+        
+        store.dispatch(LoginAction(email))
+        
+        const new_updatedState = store.getState()
+        console.log(new_updatedState)
        
+
      const showToastMessage = () => {
           toast.success('Logging In', {
               position: toast.POSITION.TOP_RIGHT
@@ -65,15 +57,11 @@ class LoginInContainer extends Component {
 
       showToastMessage()
 
-   
+      
 
-      return firebase.getUser(user.uid)
-      })
-      .then( querySnapshot => {
-        const userData = querySnapshot.data()        
-        LoginAction(userData);
-   
-      })
+     })
+
+    
 
       .catch(error => {
       const errorMessage = error.message;  
