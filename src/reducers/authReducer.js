@@ -1,4 +1,4 @@
-import {LOGIN} from '../constants/actionTypes'
+import {LOGIN, LOGOUT} from '../constants/actionTypes'
 
 const INITIAL_STATE = {
     user: null
@@ -10,6 +10,8 @@ const authReducer = (state = INITIAL_STATE, action) =>{
         case LOGIN: 
         return {...state, user: action.payload};
 
+        case LOGOUT:
+        return  {...state, user: action.payload};
      
         default: 
         return state;
