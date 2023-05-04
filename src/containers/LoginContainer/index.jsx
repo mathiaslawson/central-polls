@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack'
 import Login from '../../pages/Login'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import store from '../../store';
+import {store} from '../../store'
 
 
 
@@ -40,14 +40,10 @@ class LoginInContainer extends Component {
       .then(success => {
         const user = success.user;
 
-        const updatedState = store.getState()
-        console.log(updatedState)
-        
-        store.dispatch(LoginAction(email))
-        
-        const new_updatedState = store.getState()
-        console.log(new_updatedState)
        
+       store.dispatch(LoginAction(email))
+      window.location.href='./candidates'
+        
 
      const showToastMessage = () => {
           toast.success('Logging In', {

@@ -5,7 +5,7 @@ import { withFirebase } from '../../services'
 import {compose} from 'redux'
 import { connect } from 'react-redux'
 import Firebase from '../../services'
-import store from '../../store'
+
 
 
 
@@ -47,7 +47,7 @@ function RegisterContainer() {
 
          firebase.addUser(user.uid, userData)
 
-         store.dispatch(Login(userData.schoolMail))
+       //  store.dispatch(Login(userData.schoolMail))
          
 
          // .then(()=>(firebase.auth.currentUser.uid))
