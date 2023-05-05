@@ -24,9 +24,6 @@ function Index({onSubmit, onChange}) {
 
   const [selected, setSelected] = useState(depts[0].value)
 
-  const handleChange = (e) => {
-    setSelected(e.target.value)
-  }
 
   return (
     
@@ -75,10 +72,7 @@ function Index({onSubmit, onChange}) {
                 borderColor: 'rgb(140,31,31)',
                 borderWidth: '0.02rem'
               }}
-
-              
-                
-              
+            
             ></input>
 
             <input

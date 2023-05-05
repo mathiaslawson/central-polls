@@ -7,8 +7,6 @@ import { connect } from 'react-redux'
 import Firebase from '../../services'
 
 
-
-
 function RegisterContainer() {
   const [details, setDetails] = useState({
   
