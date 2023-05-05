@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Candidates from '../../pages/Candidates'
+import CandidateDetails from '../../pages/CandidateDetails'
 import Firebase from '../../services'
 
 function index() {
@@ -12,7 +13,7 @@ function index() {
         const  candidates = collection.onSnapshot((querySnapshot)=>{
            const data = querySnapshot.docs.map((doc)=> doc.data());
            setCandidates(data)
-           console.log(data)
+          
         })
         return () => {
            candidates()
@@ -20,9 +21,38 @@ function index() {
       }, [])
 
 
+      const fetchCandidateData = async (e) => {
+         const firebase = new Firebase()
+         const candidateRef = await firebase.db.collection('candidates')
+         
+         const  candidates = await candidateRef.onSnapshot((querySnapshot)=>{
+            const data =  querySnapshot.docs.map((doc)=> doc.data());
+            setCandidates(data)
+            
+            const candidateID = e.target.id
+            try {
+                   data.map((detail)=>{
+                      if (detail.candidateName === candidateID) {
+                       
+                        console.log(detail)
+
+                      }else{
+                        return false
+                      }
+                   })
+            }catch(error){
+                 console.log(error)
+            }
+         })
+         return () => {
+            candidates()
+         }
+      }
+
+
   return (
     <>
-      <Candidates candidates={candidates}/>
+      <Candidates candidates={candidates} onClick={fetchCandidateData}/>
     
     </>
   )

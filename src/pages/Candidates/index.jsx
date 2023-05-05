@@ -4,19 +4,19 @@ import { store } from '../../store'
 import Logout from '../../actions/Logout'
 import ban from './ban.jpg'
 
-function Candidates({candidates}) {
+function Candidates({candidates, onClick}) {
 
  
   return (
     <>
-    <p>Welcome {store.getState().auth.user}</p>
+    {/* <p>Welcome {store.getState().auth.user}</p>
     <button
     onClick={()=>{
        store.dispatch(Logout(null))
        window.location.href='./home'
     }}
     >Logout</button>
-    <p>as</p>
+    <p>as</p> */}
     
     {/* Header */}
     <Box marginTop='2rem'>
@@ -29,8 +29,8 @@ function Candidates({candidates}) {
       {/* Candidate Component */}
       {
         candidates.map((candidate)=>(
-         <Box display='grid' textAlign='center'>
-             <Box              >
+         <Box display='grid' textAlign='center' key={candidate.candidateName}>
+             <Box>
                <img src={ban} alt=""  width='80%' height='90%' style={{borderRadius:'50%'}}/> 
              </Box>
              <Box>{candidate.candidateName}</Box>
@@ -45,7 +45,10 @@ function Candidates({candidates}) {
               padding: '0.5rem',
               marginTop: '0.9rem',
               cursor: 'pointer'
-              }}>View Candidate Details</button>
+              }}
+              onClick={onClick}
+              id={candidate.candidateName}
+              >View Candidate Details</button>
              </Box>
          </Box>
          ))

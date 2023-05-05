@@ -1,8 +1,13 @@
 import React from 'react'
+import { Box } from '@mui/material'
 
 function index() {
   return (
-    <div>index</div>
+    <>
+       <Box padding='1rem'>
+         a
+       </Box>
+    </>
   )
 }
 
