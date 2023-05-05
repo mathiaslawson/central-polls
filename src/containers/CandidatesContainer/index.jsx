@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Candidates from '../../pages/Candidates'
-import CandidateDetails from '../../pages/CandidateDetails'
 import Firebase from '../../services'
+import { store } from '../../store'
+import CandidateDetailsAction from '../../actions/CandidateDetails'
 
 function index() {
 
@@ -33,8 +34,19 @@ function index() {
             try {
                    data.map((detail)=>{
                       if (detail.candidateName === candidateID) {
-                       
+                        const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience} = detail
+
+                        // const {experienceDuration, experiencePosition} = candidateExperience
+                         
+                        const new_details = {
+                            candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel
+                        }
+                        
+
                         console.log(detail)
+                        store.dispatch(CandidateDetailsAction(new_details))
+
+                      
 
                       }else{
                         return false

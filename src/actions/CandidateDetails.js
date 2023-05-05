@@ -1,10 +1,10 @@
 import {CANDIDATE_DETAILS} from '../constants/actionTypes'
 
-const CandidateDetails = (user) => {
+const CandidateDetailsAction = (details) => {
     return {
         type: CANDIDATE_DETAILS,
-         payload: details
+        payload: details
     }
 }
 
-export default CandidateDetails
+export default CandidateDetailsAction
