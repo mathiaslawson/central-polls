@@ -42,11 +42,9 @@ function index() {
                             candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel
                         }
                         
-
                         console.log(detail)
-                        store.dispatch(CandidateDetailsAction(new_details))
-
-                      
+                        store.dispatch(CandidateDetailsAction(new_details))    
+                        window.location.href='./candidate-details'       
 
                       }else{
                         return false

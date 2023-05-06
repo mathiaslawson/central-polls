@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import LoginContainer from '../containers/LoginContainer';
 import RegisterContainer from '../containers/RegisterContainer';
 import CandidatesContainer from '../containers/CandidatesContainer';
+import CandidateDetialsContainer from '../containers/CandidateDetailsContainer'
 
 
 
@@ -15,7 +16,7 @@ import CandidatesContainer from '../containers/CandidatesContainer';
 const Routes = () => {
   return (
     <Switch>
-      <PrivateRoute path={ROUTES.CANDIDATES_DETAILS} component={CandidateDetails}></PrivateRoute>
+      <PrivateRoute path={ROUTES.CANDIDATES_DETAILS} component={CandidateDetialsContainer}></PrivateRoute>
       <PrivateRoute path={ROUTES.CANDIDATES} component={CandidatesContainer} />
       <PublicRoute path={ROUTES.REGISTER} component={RegisterContainer} />
       <PublicRoute path={ROUTES.LOGIN} component={LoginContainer} />
