@@ -3,6 +3,7 @@ import Candidates from '../../pages/Candidates'
 import Firebase from '../../services'
 import { store } from '../../store'
 import CandidateDetailsAction from '../../actions/CandidateDetails'
+import Vote from '../../actions/Vote'
 
 function index() {
 
@@ -29,21 +30,48 @@ function index() {
          const  candidates = await candidateRef.onSnapshot((querySnapshot)=>{
             const data =  querySnapshot.docs.map((doc)=> doc.data());
             setCandidates(data)
-            
+
+          
             const candidateID = e.target.id
             try {
                    data.map((detail)=>{
                       if (detail.candidateName === candidateID) {
-                        const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience} = detail
+                        const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience, voteCount} = detail
+
+                       
 
                         // const {experienceDuration, experiencePosition} = candidateExperience
+
+                        //Query Doc ID
+
+                        firebase.db.collection('candidates').where('candidateName', '==', candidateName).get()
+                        .then((querySnapshot)=>{
+                           if(!querySnapshot.empty){
+                              const candidateDoc = querySnapshot.docs[0]
+                              console.log(candidateDoc.id)
+                           }else{
+                              console.log("eyy")
+                           }
+                        })
                          
                         const new_details = {
-                            candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel
+                            candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel, voteCount
                         }
+
+
+                        console.log(voteCount)
+                        //vote global state
+                        const vote_detials = {
+                           voteCount, candidateName
+                        }
+
+                     
                         
-                        console.log(detail)
-                        store.dispatch(CandidateDetailsAction(new_details))    
+                        store.dispatch(Vote(vote_detials)) 
+                        store.dispatch(CandidateDetailsAction(new_details))  
+
+                        
+
                         window.location.href='./candidate-details'       
 
                       }else{

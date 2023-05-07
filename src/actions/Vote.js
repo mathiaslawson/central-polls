@@ -1,10 +1,10 @@
 import {VOTE} from '../constants/actionTypes'
 
-const Login = (vote_count) => {
+const Vote = (vote_count) => {
     return {
          type: VOTE,
-         payload: vote_count
+         payload : vote_count
     }
 }
 
-export default Login
+export default Vote
