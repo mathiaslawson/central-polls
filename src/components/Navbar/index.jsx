@@ -34,7 +34,7 @@ function index() {
             </Link>
           </Box>
           <Box>
-          <Link href='/register' style={{textDecoration: "none", color: 'white'}}>
+          <Link to='/register' style={{textDecoration: "none", color: 'white'}}>
           <button
               style={{
                 border:'none',
