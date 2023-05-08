@@ -11,10 +11,16 @@ function Candidates({ candidates, onClick }) {
   useEffect(() => {
     setLoading(true);
     // simulate a delay for fetching data
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+
+  
+    if(candidates.length !== 0){
+      setLoading(false)
+    }
+
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2000);
+  }, [candidates]);
 
   if (loading) {
     return <Loader />;
