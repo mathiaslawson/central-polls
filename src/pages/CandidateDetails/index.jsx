@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { Box, Typography, useMediaQuery} from '@mui/material'
 import './cd.css'
+import RoundedAvatar from '../../components/RoundedAvatar'
 
 function index({details}) {
 
@@ -20,13 +21,14 @@ function index({details}) {
 
             <Box display={smallScreens ? 'flex': 'grid'} marginTop='2rem' justifyContent='space-between' height='75vh' width='100%' gap='1rem'>
                 <Box width={smallScreens ? '40%' : '100%'} backgroundColor='#fff' borderRadius='0.5rem' padding='1rem' display='grid' justifyContent='center'>
-                      <Box
+                      {/* <Box
                       className='profile'
                       height={smallScreens ? '3l0vh': '30vh'}
                       width={smallScreens ? '75%': '90%'}
                       marginLeft={smallScreens? '2rem': '0.7rem'}
                       >
-                      </Box>
+                      </Box> */}
+                      <RoundedAvatar />
                       <Box marginTop={smallScreens ? '2rem': '2rem'}>
                       <Typography textAlign='center' variant='h5' fontWeight='600'> {details.candidateName}</Typography>
                       <Typography textAlign='center' marginTop='4rem' fontWeight='600'> Vote as {details.candidateDepartment} {details.candidatePosition}</Typography>
