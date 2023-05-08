@@ -7,7 +7,7 @@ function index() {
     const smallScreens = useMediaQuery('(min-width: 1200px)')
   return (
    <Box display='flex' justifyContent='center' marginTop='10rem'>
-   <img src={loader} width={smallScreens ? '20%': '20%'} height={smallScreens ? '20%': '20%'}></img>
+   <img src={loader} width={smallScreens ? '20%': '50%'} height={smallScreens ? '20%': '50%'}></img>
    </Box>
   )
 }
