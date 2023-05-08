@@ -22,8 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <CssBaseline /> 
             <Router>  
               <Navbar/>
-         
-            <App />
+               <App />
           </Router>
           </ThemeProviderWrapper>
           </FirebaseContext.Provider>
