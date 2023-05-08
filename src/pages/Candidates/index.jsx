@@ -9,14 +9,14 @@ function Candidates({candidates, onClick}) {
  
   return (
     <>
-    {/* <p>Welcome {store.getState().auth.user}</p>
+    <p>Welcome {store.getState().auth.user}</p>
     <button
     onClick={()=>{
        store.dispatch(Logout(null))
        window.location.href='./home'
     }}
     >Logout</button>
-    <p>as</p> */}
+    <p>as</p>
     
     {/* Header */}
     <Box marginTop='2rem'>
