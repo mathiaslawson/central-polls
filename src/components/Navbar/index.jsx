@@ -34,6 +34,7 @@ function index() {
             </Link>
           </Box>
           <Box>
+          <Link href='/register' style={{textDecoration: "none", color: 'white'}}>
           <button
               style={{
                 border:'none',
@@ -50,10 +51,11 @@ function index() {
                 width: 'max-content'
               }}
             >
-              <a href='/register' style={{textDecoration: "none", color: 'white'}}>
+             
               Register as a Voter
-              </a>
+             
             </button>
+            </Link>
           </Box>
           </Box>
      </Box>
