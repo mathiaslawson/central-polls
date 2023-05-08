@@ -122,9 +122,7 @@ function Index({onChange, onSubmit, error}) {
               
             </Box>
 
-<br /><br />
-<br /><br />
-<br /><br />
+
 
             </Box>
        </Box>

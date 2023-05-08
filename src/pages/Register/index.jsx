@@ -3,7 +3,7 @@ import register from './register.png'
 import { useState } from 'react';
 
 
-function Index({onSubmit, onChange}) {
+function Index({onSubmit, onChange, department, error}) {
 
   const smallScreens = useMediaQuery('(min-width: 1200px)')
 
@@ -23,6 +23,7 @@ function Index({onSubmit, onChange}) {
   ]
 
   const [selected, setSelected] = useState(depts[0].value)
+  console.log(department)
 
 
   return (
@@ -60,7 +61,10 @@ function Index({onSubmit, onChange}) {
             onSubmit={onSubmit}
           >
             <input
-               onChange={onChange}
+            required
+              onChange={onChange}
+              pattern='^CSC\/\d{2}\/\d{2}\/\d{4}$'
+              title='Please enter valid index number, eg.CSC/**/**/****'
               name='indexNumber'
               id='indexNumber'
               placeholder='Enter your ID number'
@@ -76,7 +80,10 @@ function Index({onSubmit, onChange}) {
             ></input>
 
             <input
+            required
               onChange={onChange}
+              pattern="^[a-zA-Z0-9._%+-]+@central\.edu\.gh$"
+              title='Please enter a valid email address ending in central.edu.gh'
               name='schoolMail'
               id='schoolMail'
               placeholder='Enter your student e-mail'
@@ -92,7 +99,8 @@ function Index({onSubmit, onChange}) {
 
             <FormControl>
               <Select
-                value={selected}
+              required
+                value={!department ? 'CSC' : department}
                 onChange={onChange}
                 name = 'department'
                 style={{
@@ -117,6 +125,7 @@ function Index({onSubmit, onChange}) {
             </FormControl>
 
             <input
+            required
                onChange={onChange}
               name='password'
               id='password'
@@ -134,6 +143,7 @@ function Index({onSubmit, onChange}) {
             </input>
 
             <input
+            required
               onChange={onChange}
               name='confirmPassword'
               id='confirmPassword'
@@ -150,11 +160,13 @@ function Index({onSubmit, onChange}) {
             >
             </input>
 
-            <Typography textTransform='capitalize' textAlign='center'>by clicking the sign in button</Typography>
-            <Typography textTransform='capitalize' textAlign='center' color='rgb(140,31,31)' marginTop='-2rem'>terms and conditions</Typography>
+            {error}
+
+            {/* <Typography textTransform='capitalize' textAlign='center'>by clicking the sign in button</Typography>
+            <Typography textTransform='capitalize' textAlign='center' color='rgb(140,31,31)' marginTop='-2rem'>terms and conditions</Typography> */}
 
             <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
-              Sign In
+              Register
             </button>
 
 

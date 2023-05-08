@@ -11,12 +11,15 @@ function RegisterContainer() {
   const [details, setDetails] = useState({
   
   })
+  const [error, setError] = useState(null)
 
   const handleChange = (e) =>{
    setDetails(prevState => ({
        ...prevState, 
        [e.target.name]: e.target.value
    }))
+
+   console.log(details)
 
   }
 
@@ -44,6 +47,7 @@ function RegisterContainer() {
          }
 
          firebase.addUser(user.uid, userData)
+         window.location.href = '/candidates';
 
        //  store.dispatch(Login(userData.schoolMail))
          
@@ -54,21 +58,21 @@ function RegisterContainer() {
          //    console.log(userData)
          //    Login(userData)
          // })
-        
-
-      //  window.location.href = './candidates';
+              
 
       }catch(error){
          console.log(error)
+         setError(error)
       }
   
   }
 
+  const department = details.department
 
 
   return (
      <>
-        <Register onChange={handleChange} onSubmit={handleSubmit}/>
+        <Register onChange={handleChange} onSubmit={handleSubmit} department={department} error={error}/>
      </>
   )
 }
