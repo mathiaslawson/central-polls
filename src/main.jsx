@@ -9,6 +9,7 @@ import { CssBaseline } from '@mui/material';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ThemeProviderWrapper from './ThemeProviderWrapper.jsx';
 import { PersistGate } from 'redux-persist/integration/react';
+import './App.css'
 
 
 
