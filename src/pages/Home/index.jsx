@@ -1,5 +1,6 @@
 import {Box, Typography, useMediaQuery} from '@mui/material'
 import girl from '../../assets/LandingPage/img1.png'
+import {Link} from 'react-router-dom'
 
 
 

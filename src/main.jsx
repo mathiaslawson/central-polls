@@ -19,9 +19,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
       <FirebaseContext.Provider value={new Firebase()}>
           <ThemeProviderWrapper>
-            <CssBaseline />   
+            <CssBaseline /> 
+            <Router>  
               <Navbar/>
-          <Router>
+         
             <App />
           </Router>
           </ThemeProviderWrapper>

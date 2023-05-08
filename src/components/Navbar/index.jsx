@@ -1,10 +1,10 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import logo from './central.png'
+import {Link} from 'react-router-dom'
 
-function index({props}) {
- console.log(props)
-
+function index() {
+ 
   return (
    <>
      <Box display='flex' justifyContent='space-between' padding='0.1rem' backgroundColor='white' >
@@ -13,6 +13,7 @@ function index({props}) {
           </Box>
           <Box display='flex' marginRight='2rem' gap='0.5rem' marginTop='0.6rem'>
           <Box>
+          <Link to='/login'>
             <button
               style={{
                 border:'none',
@@ -25,10 +26,12 @@ function index({props}) {
                 borderWidth: '0.03rem',
                 fontSize: '0.8rem'
               }}
-              onClick={()=>window.location.href='./login'}
             >
+             
               Login
+             
             </button>
+            </Link>
           </Box>
           <Box>
           <button
@@ -47,7 +50,9 @@ function index({props}) {
                 width: 'max-content'
               }}
             >
+              <a href='/register' style={{textDecoration: "none", color: 'white'}}>
               Register as a Voter
+              </a>
             </button>
           </Box>
           </Box>
