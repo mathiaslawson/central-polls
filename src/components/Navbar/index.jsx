@@ -14,12 +14,12 @@ function index() {
    <>
     
      <Box display='flex' justifyContent='space-between' padding='0.1rem' backgroundColor='white' >
-          <Box marginLeft='0.5rem'>
-            <img src={logo} width='70%rem'/>
+          <Box marginLeft='0.5rem' marginTop='0.3rem'>
+            <img src={logo} width='70%'/>
           </Box>
           {
             !user ? 
-          <Box display='flex' marginRight='2rem' gap='0.5rem' marginTop='0.6rem'>
+          <Box display='flex' marginRight='2rem' gap='0.5rem' marginTop='0.8rem'>
           <Box>
           <Link to='/login'>
             <button
@@ -69,7 +69,7 @@ function index() {
           //new contents if auth
            : 
           <Box display='flex' position='relative' left='-0.7rem'>
-            <Typography marginTop='0.3rem' marginRight='1rem' backgroundColor='brown' padding='0.6rem' borderRadius='3rem' color='white' height='2.5rem' width='max-content'>{user}</Typography>
+            <Typography marginTop='0.3rem' marginRight='1rem' backgroundColor='brown' padding='0.4rem' borderRadius='3rem' color='white' height='2rem' width='max-content'>{user}</Typography>
       <button
         onClick={() => {
           store.dispatch(Logout(null))
@@ -80,13 +80,14 @@ function index() {
           borderRadius: '1.2rem',
           marginLeft: '-0.5rem',
           width: 'max-content',
-          padding:'0.6rem',
-          height:'2.5rem',
+          padding:'0.3rem',
+          height:'2rem',
           marginTop: '0.4rem',
           border:'solid',
           borderColor:'brown',
           backgroundColor:'white',
-          borderWidth:'0.2rem'
+          borderWidth:'0.2rem',
+          cursor: 'pointer'
            }}
          >
         Logout

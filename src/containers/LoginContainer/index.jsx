@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {Login as LoginAction} from '../../actions';
@@ -19,11 +19,13 @@ class LoginInContainer extends Component {
     password: '',
     error: null,
     loading: false,
-
+    valid: false
   };
+
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+   
   };
   
 
@@ -56,8 +58,6 @@ class LoginInContainer extends Component {
       
 
      })
-
-    
 
       .catch(error => {
       const errorMessage = error.message;  

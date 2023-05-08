@@ -1,9 +1,11 @@
 import {Box, useMediaQuery, Typography} from '@mui/material'
 import login from './login.png'
+import { ErrorSharp } from '@material-ui/icons';
 
 
 function Index({onChange, onSubmit, error}) {
   const smallScreens = useMediaQuery('(min-width: 1200px)');
+  
 
   return (
     <>
@@ -42,17 +44,22 @@ function Index({onChange, onSubmit, error}) {
               display='grid'
               justifyContent='center'
               padding='4rem'
-              height='10vh'
+              height='25vh'
               gap='2rem'
               marginTop={smallScreens && {marginTop: '10rem'}}
               onSubmit={onSubmit}
               component='form'
+              marginLeft='-7rem'
+              // sx={{overflow: 'auto'}}
             >
              
                <input 
+                pattern="^[a-zA-Z0-9._%+-]+@central\.edu\.gh$"
+                title='Please enter a valid email address ending in central.edu.gh'
                 onChange= {onChange}
                 name='email'
                 id='email'
+                required
                style={!smallScreens ? {
                 padding: '1rem',
                 border: 'none',
@@ -62,7 +69,7 @@ function Index({onChange, onSubmit, error}) {
                 borderWidth: '0.02rem'
               }: { 
               padding: '1rem',
-              width: '150%',
+              width: 'max-content',
               border: 'none',
               borderRadius: '0.5rem',
               borderStyle: 'solid',
@@ -71,46 +78,53 @@ function Index({onChange, onSubmit, error}) {
             }
             } placeholder='Student Mail'
               >
-
               </input>
+               
+               <Typography color='brown' marginTop='-1rem'>
+                {}
+               </Typography>
 
                <input 
                onChange= {onChange}
                name='password'
                id='password'
                type='password'
+               required
                style={!smallScreens ? {
                 padding: '1rem',
-               
                 border: 'none',
                 borderRadius: '0.5rem',
                 borderStyle: 'solid',
                 borderColor: 'rgb(140,31,31)',
                 borderWidth: '0.02rem'
               }: { 
-              padding: '1rem',
-              width: '150%',
-              border: 'none',
-              borderRadius: '0.5rem',
-              borderStyle: 'solid',
-              borderColor: 'rgb(140,31,31)',
-              borderWidth: '0.02rem',
+                padding: '1rem',
+                width: 'max-content',
+                border: 'none',
+                borderRadius: '0.5rem',
+                borderStyle: 'solid',
+                borderColor: 'rgb(140,31,31)',
+                borderWidth: '0.02rem',
             }
             } placeholder='Password'
               >
               
               </input>
 
-            <Box display='flex' justifyContent='center'>
-              <Box width='50%'>
+            <Box display='flex' >
+              <Box>
                {error}  
               </Box> 
               </Box>            
-              <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
+              <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer', width: 'max-content', marginLeft: '4rem'}} >
                 Login
               </button>
               
             </Box>
+
+<br /><br />
+<br /><br />
+<br /><br />
 
             </Box>
        </Box>
