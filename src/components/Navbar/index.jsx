@@ -25,6 +25,7 @@ function index({props}) {
                 borderWidth: '0.03rem',
                 fontSize: '0.8rem'
               }}
+              onClick={()=>window.location.href='./login'}
             >
               Login
             </button>
