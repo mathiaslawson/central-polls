@@ -3,14 +3,13 @@ import { Box, Typography } from '@mui/material'
 import logo from './central.png'
 import {Link} from 'react-router-dom'
 import {store} from '../../store'
+import Logout from '../../actions/Logout'
 
 function index() {
 
   //navbar login
   const user = store.getState().auth.user
   
-
- 
   return (
    <>
     
@@ -69,8 +68,29 @@ function index() {
           </Box>
           //new contents if auth
            : 
-          <Box>
-            <Typography marginTop='0rem' marginRight='1rem' backgroundColor='brown' padding='1rem' borderRadius='3rem' color='white' height='3rem' width='max-content'>Welcome, {user}</Typography>
+          <Box display='flex' position='relative' left='-0.7rem'>
+            <Typography marginTop='0.3rem' marginRight='1rem' backgroundColor='brown' padding='0.6rem' borderRadius='3rem' color='white' height='2.5rem' width='max-content'>{user}</Typography>
+      <button
+        onClick={() => {
+          store.dispatch(Logout(null))
+          window.location.href = './home'
+        }}
+        style={{
+          border:'none',
+          borderRadius: '1.2rem',
+          marginLeft: '-0.5rem',
+          width: 'max-content',
+          padding:'0.6rem',
+          height:'2.5rem',
+          marginTop: '0.4rem',
+          border:'solid',
+          borderColor:'brown',
+          backgroundColor:'white',
+          borderWidth:'0.2rem'
+           }}
+         >
+        Logout
+      </button>
           </Box>
            }
      </Box>
