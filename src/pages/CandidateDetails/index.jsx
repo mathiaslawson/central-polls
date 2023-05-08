@@ -5,7 +5,7 @@ import RoundedAvatar from '../../components/RoundedAvatar'
 
 function index({details}) {
 
-   const smallScreens = useMediaQuery('(min-width:400px)')
+   const smallScreens = useMediaQuery('(min-width:1200px)')
    console.log(details)
 
   return (
