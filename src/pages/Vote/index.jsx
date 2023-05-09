@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 
-function Index({ handleYesClick, candidateName, differentCandidate, goBack }) {
+function Index({ handleYesClick, candidateName, differentCandidate, goBack, disabled }) {
+
+  console.log(disabled, 1)
+
   return (
     <Box display="grid" justifyContent="center">
       <Box marginTop="5rem">
@@ -11,7 +14,9 @@ function Index({ handleYesClick, candidateName, differentCandidate, goBack }) {
       </Box>
 
       <Box display="grid" justifyContent="center" marginTop="5rem">
-        <button onClick={handleYesClick} style={{        
+        <button onClick={handleYesClick} 
+        disabled = {disabled}
+        style={{        
           padding: "4rem" , 
           borderRadius: '50%',
           borderColor: 'brown', 

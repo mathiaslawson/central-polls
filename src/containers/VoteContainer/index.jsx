@@ -11,15 +11,19 @@ function index() {
 
     const [vote, setVote] = useState(1);
     const [docID, setDocID] = useState('');
+    const [disabled, setDisabled] = useState(false)
   
     useEffect(() => {
       const details = store.getState().details.details; 
       setVote(details.voteCount);
 
     }, []);
+
+    
   
     const handleYesClick = async () => {
-    console.log("click")
+        setDisabled(true)
+        console.log(disabled)
 
       // Redux state update
       const newVote = vote + 1;
@@ -28,6 +32,7 @@ function index() {
       console.log(candidateDetails);
   
       const candidateName = store.getState().details.details.candidateName;
+
   
       // Query Doc ID
       try {
@@ -45,7 +50,8 @@ function index() {
           await firebase.db.collection('candidates').doc(candidateDoc.id).update({
             voteCount: newVote,
           });
-  
+
+         
           console.log('Vote success');
         } else {
           console.log('No candidate found with name: ', candidateName);
@@ -60,6 +66,7 @@ function index() {
         })
       );
 
+      window.location.href = '/vote-complete'
 
     };
 
@@ -77,6 +84,7 @@ function index() {
     const goBack = () =>{
         window.history.back()
     }
+
    
 
 
@@ -84,6 +92,7 @@ function index() {
     <>
       <Vote handleYesClick={handleYesClick} candidateName={info} differentCandidate={differentCandidate}
       goBack = {goBack}
+      disabled = {disabled}
       />
     </>
   )
