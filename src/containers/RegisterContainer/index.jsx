@@ -6,7 +6,9 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import Firebase from "../../services";
 
-function RegisterContainer() {
+const firebaseInstance = new Firebase();
+
+function RegisterContainer({ Login }) {
   const [details, setDetails] = useState({});
   const [error, setError] = useState(null);
 
@@ -15,65 +17,62 @@ function RegisterContainer() {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-
-    console.log(details);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(details);
-
-    const firebase = new Firebase();
-    console.log(firebase);
 
     const { schoolMail, password, indexNumber, department } = details;
-    //  const auth = getAuth(firebase.auth)
 
     try {
-      const userCrential = await firebase.signUp(schoolMail, password);
-      const user = userCrential.user;
-      console.log(user);
+      // Check if user already exists with the same school mail
+      const querySnapshot = await firebaseInstance.db
+        .collection("users")
+        .where("schoolMail", "==", schoolMail)
+        .get();
 
-      // add user to db & create user collection if not available
+      if (!querySnapshot.empty) {
+        // User with same email already exists
+        setError("User with same email already exists");
+        return;
+      }
+
+      // Create new user in Firestore
+      const userCredential = await firebaseInstance.signUp(schoolMail, password);
+      const user = userCredential.user;
+
+      const departmentFieldValue = department ? department : "";
+
       const userData = {
         indexNumber,
-        department,
+        department: departmentFieldValue,
         schoolMail,
       };
 
-      firebase.addUser(user.uid, userData);
+      await firebaseInstance.addUser(user.uid, userData);
+
+      // Send email verification
+      await user.sendEmailVerification();
+
+      Login(userData.schoolMail);
+
       window.location.href = "/candidates";
-
-      store
-        .dispatch(Login(userData.schoolMail))
-
-        .then(() => firebase.auth.currentUser.uid)
-        .then((querySnapshot) => {
-          const userData = querySnapshot.data();
-          console.log(userData);
-          Login(userData);
-        });
     } catch (error) {
       console.log(error);
-      setError(error);
+      setError(error.message);
     }
   };
 
   const department = details.department;
 
   return (
-    <>
-      <Register
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        department={department}
-        error={error}
-      />
-    </>
+    <Register
+      onChange={handleChange}
+      onSubmit={handleSubmit}
+      department={department}
+      error={error}
+    />
   );
 }
 
-export default compose(
-  connect(null, { Login }),
-  withFirebase
-)(RegisterContainer);
+export default compose(connect(null, { Login }), withFirebase)(RegisterContainer);

@@ -20,7 +20,6 @@ function index() {
     }, []);
 
     
-  
     const handleYesClick = async () => {
         setDisabled(true)
         console.log(disabled)
