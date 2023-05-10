@@ -49,7 +49,7 @@ function Index({onChange, onSubmit, error}) {
               marginTop={smallScreens && {marginTop: '10rem'}}
               onSubmit={onSubmit}
               component='form'
-              marginLeft='-7rem'
+              marginLeft='0rem'
               // sx={{overflow: 'auto'}}
             >
              

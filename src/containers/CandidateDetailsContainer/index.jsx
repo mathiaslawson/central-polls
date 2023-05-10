@@ -1,18 +1,15 @@
-import React from 'react'
-import CandidateDetails from '../../pages/CandidateDetails'
-import {store} from '../../store'
+import React from "react";
+import CandidateDetails from "../../pages/CandidateDetails";
+import { store } from "../../store";
 
 function index() {
+  const fetchDetails = store.getState().details.details;
 
-    const fetchDetails = store.getState().details.details
-    
-
-  
   return (
     <>
-       <CandidateDetails details={fetchDetails}/>
+      <CandidateDetails details={fetchDetails} />
     </>
-  )
+  );
 }
 
-export default index
+export default index;

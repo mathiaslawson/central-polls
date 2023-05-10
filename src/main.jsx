@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <ThemeProviderWrapper>
             <CssBaseline /> 
             <Router>  
-              <Navbar/>
+              {/* <Navbar/> */}
                <App />
           </Router>
           </ThemeProviderWrapper>
