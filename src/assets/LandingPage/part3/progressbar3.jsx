@@ -1,7 +1,7 @@
 import React from 'react'
 import {CircularProgressbar, buildStyles} from "react-circular-progressbar"
 import Changes from "./changes"
-
+import './parts.css'
 
 export default function progressbar3() {
 

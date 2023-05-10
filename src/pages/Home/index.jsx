@@ -16,6 +16,15 @@ import Progressbar3 from '../../assets/LandingPage/part3/progressbar3'
 
 function index() {
   const smallScreens = useMediaQuery('(min-width: 800px)')
+
+  const mainBox = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: '5rem',
+    gap: '3rem'
+  }
+
   const part2styles = {
     display: 'flex',
     flexDirection: 'column',
@@ -23,10 +32,13 @@ function index() {
     justifyContent: 'spaceBetween'
   }
 
+
   return (
     <>
       <Box padding='0rem'>
-        <Box height='100vh' display='flex' justifyContent='space-between' justifySelf='center' position='relative' >
+
+        {/* PART 1 */}
+        <Box display='flex' justifyContent='space-between'>
           <Box margin='4rem 4rem ' width='90%' >
             <Typography fontSize={smallScreens ? '3rem' : '2rem'} width='90%' fontWeight='bold'>
               Fast, Secured and
@@ -47,7 +59,6 @@ function index() {
                 padding: '0.8rem',
                 borderRadius: '0.9rem',
                 cursor: 'pointer',
-                border: 'solid',
                 borderColor: 'white',
                 backgroundColor: '#8c1f1f',
                 borderWidth: '0.1rem',
@@ -64,7 +75,7 @@ function index() {
 
           </Box>
           <Box
-            height='100vh'
+
             overflow='hidden'
           >
             <img src={girl}
@@ -80,13 +91,17 @@ function index() {
 
         {/* PART TWO */}
         <Box
+          {...mainBox}
+
+          minHeight='50vh'
           backgroundColor='#8c1f1f'
-          padding='5rem'
           color='white'
           textAlign='center'
+
+
         >
           <Box>
-            <Typography variant='h3' fontWeight='bold' color='white'>our features</Typography>
+            <Typography variant='h3' fontWeight='bold' color='white' fontSize={smallScreens ? '3rem' : '2rem'} >our features</Typography>
             <Typography>A secured system that provides an easy way
               to vote at your comfort
             </Typography>
@@ -126,13 +141,14 @@ function index() {
 
         {/* PART 3 */}
         <Box
-          padding='5rem'
+
+          {...mainBox}
+
           textAlign='center'
+          minHeight='50vh'
         >
-          <Box
-            paddingBottom='3rem'
-          >
-            <Typography variant='h3' fontWeight='bold' color='#8c1f1f'>monitor the voting process</Typography>
+          <Box>
+            <Typography variant='h3' fontWeight='bold' color='#8c1f1f' fontSize={smallScreens ? '3rem' : '2rem'}>monitor the voting process</Typography>
             <Typography>track the number of votes and voters with our real-time counter</Typography>
           </Box>
 
@@ -140,13 +156,18 @@ function index() {
             display='flex'
             sx={smallScreens ? { flexDirection: 'row' } : { flexDirection: 'column', gap: '2rem' }}
             alignItems='center'
-            justifyContent='space-between'
+            justifyContent='space-evenly'
+
           >
 
-            <Box width='13rem'  >
-              <Progressbar1 />
-              <Typography variant='h6' fontWeight='bold'>number of students</Typography>
+            <Box>
+              <Box width='13rem'  >
+                <Progressbar1 />
+                <Typography variant='h6' fontWeight='bold'>number of students</Typography>
+              </Box>
             </Box>
+
+
             <Box width='13rem'>
               <Progressbar2 />
               <Typography variant='h6' fontWeight='bold'>total number of votes</Typography>
@@ -174,10 +195,10 @@ function index() {
             <img src={graph} fetchpriority='high' />
           </Box>
           <Box>
-            <Box marginTop='20%'>
-              <Typography variant='h3' textTransform='capitalize'>view live result</Typography>
+            <Box marginTop={smallScreens ? '10%' : '20%'}>
+              <Typography variant='h3' textTransform='capitalize' fontSize={smallScreens ? '3rem' : '2rem'}>view live result</Typography>
               <ul>
-                <li><Typography>view live results of the elections instantly on our home page without logging in</Typography></li>
+                <li><Typography textAlign='left'>view live results of the elections instantly on our home page without logging in</Typography></li>
                 <li><Typography textAlign='left'>you can also check the electoral candidates</Typography></li>
               </ul>
             </Box>
@@ -188,17 +209,17 @@ function index() {
 
         {/* PART5 */}
         <Box padding='4rem'>
-          <Box marginBottom='3rem'><Typography variant='h3' color='rgb(140,31,31)' textAlign='center'>How it works</Typography></Box>
+          <Box marginBottom='3rem'><Typography variant='h3' color='rgb(140,31,31)' textAlign='center' fontSize={smallScreens ? '3rem' : '2rem'}>How it works</Typography></Box>
           <Box
             display='flex'
             sx={smallScreens ? { flexDirection: 'row' } : { flexDirection: 'column', gap: '2rem' }}
             justifyContent='space-evenly'>
-            <Box><img src={how} fetchpriority='high' /></Box>
-            <Box><img src={voting} fetchpriority='high' /></Box>
+            <Box><img src={how} /></Box>
+            <Box><img src={voting} /></Box>
           </Box>
         </Box>
 
-      </Box>
+      </Box >
     </>
   )
 }
