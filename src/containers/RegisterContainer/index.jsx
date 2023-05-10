@@ -5,6 +5,7 @@ import { withFirebase } from "../../services";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import Firebase from "../../services";
+import {store} from '../../store'
 
 function RegisterContainer() {
   const [details, setDetails] = useState({});
@@ -16,16 +17,13 @@ function RegisterContainer() {
       [e.target.name]: e.target.value,
     }));
 
-    console.log(details);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(details);
-
+  
     const firebase = new Firebase();
-    console.log(firebase);
-
+ 
     const { schoolMail, password, indexNumber, department } = details;
     //  const auth = getAuth(firebase.auth)
 
@@ -42,7 +40,7 @@ function RegisterContainer() {
       };
 
       firebase.addUser(user.uid, userData);
-      window.location.href = "/candidates";
+      // window.location.href = "/candidates";
 
       store
         .dispatch(Login(userData.schoolMail))
@@ -50,8 +48,10 @@ function RegisterContainer() {
         .then(() => firebase.auth.currentUser.uid)
         .then((querySnapshot) => {
           const userData = querySnapshot.data();
-          console.log(userData);
+  
           Login(userData);
+          window.location.href = "/candidates";
+
         });
     } catch (error) {
       console.log(error);
