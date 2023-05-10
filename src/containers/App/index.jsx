@@ -19,7 +19,7 @@ class App extends Component {
       this.setState({
         isLoading: false
       });
-    }, 2000);
+    }, 3500);
   }
 
   render() {
