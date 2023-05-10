@@ -160,7 +160,8 @@ function Index({onSubmit, onChange, department, error}) {
             >
             </input>
 
-            {error}
+
+            <Typography color='red'>{error}.</Typography>
             
 
             {/* <Typography textTransform='capitalize' textAlign='center'>by clicking the sign in button</Typography>

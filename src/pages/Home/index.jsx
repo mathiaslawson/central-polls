@@ -68,7 +68,8 @@ function index() {
             overflow='hidden'
           >
             <img src={girl}
-              style={smallScreens ? {
+            fetchpriority='high'
+            style={smallScreens ? {
 
               } : { display: 'none' }
               }
@@ -99,7 +100,7 @@ function index() {
             <Box
               {...part2styles}
             >
-              <img src={secure} alt='secure image' />
+              <img src={secure} alt='secure image' fetchpriority='high' />
               <Typography variant='h4' fontWeight='bold'>secured system</Typography>
               <Typography>With our sytem,<br /> your data is safe and secured</Typography>
             </Box>
@@ -107,7 +108,7 @@ function index() {
             <Box
               {...part2styles}
             >
-              <img src={vote} alt='vote image' />
+              <img src={vote} alt='vote image' fetchpriority='high'  />
               <Typography variant='h4' fontWeight='bold'>vote online</Typography>
               <Typography>with just a few clicks, <br />you can vote for your preferred candidates</Typography>
             </Box>
@@ -115,7 +116,7 @@ function index() {
             <Box
               {...part2styles}
             >
-              <img src={news} alt='news image' />
+              <img src={news} alt='news image'  fetchpriority='high' />
               <Typography variant='h4' fontWeight='bold'>real time results</Typography>
               <Typography>view real time voting results and<br /> score for each candidate</Typography>
             </Box>
@@ -170,7 +171,7 @@ function index() {
         >
           <Box
             sx={smallScreens ? {} : { display: 'none' }}>
-            <img src={graph} />
+            <img src={graph} fetchpriority='high' />
           </Box>
           <Box>
             <Box marginTop='20%'>
@@ -192,8 +193,8 @@ function index() {
             display='flex'
             sx={smallScreens ? { flexDirection: 'row' } : { flexDirection: 'column', gap: '2rem' }}
             justifyContent='space-evenly'>
-            <Box><img src={how} /></Box>
-            <Box><img src={voting} /></Box>
+            <Box><img src={how} fetchpriority='high' /></Box>
+            <Box><img src={voting} fetchpriority='high' /></Box>
           </Box>
         </Box>
 
