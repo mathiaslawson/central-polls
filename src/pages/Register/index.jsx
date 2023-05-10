@@ -23,7 +23,7 @@ function Index({onSubmit, onChange, department, error}) {
   ]
 
   const [selected, setSelected] = useState(depts[0].value)
-  console.log(department)
+ 
 
 
   return (
