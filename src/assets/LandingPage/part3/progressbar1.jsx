@@ -1,6 +1,7 @@
 import React from 'react'
 import {CircularProgressbar, buildStyles} from "react-circular-progressbar"
 import Changes from "./changes"
+import './parts.css'
 
 export default function progressbar1() {
 
@@ -13,6 +14,7 @@ export default function progressbar1() {
       text={`${value}%`}
       circleRatio={0.75}
       strokeWidth= {14}
+      
       styles={buildStyles({
         rotation: 1/2 + 1 / 8,
         pathColor: "#FF6060",
@@ -20,6 +22,7 @@ export default function progressbar1() {
         trailColor: "gray",
         textColor:"black",
         textSize:"1rem",
+        
       })}
     />
   )}
