@@ -49,14 +49,14 @@ function RegisterContainer({ Login }) {
         schoolMail,
       };
 
-      await firebaseInstance.addUser(user.uid, userData);
+    //  await firebaseInstance.addUser(user.uid, userData);
 
       // Send email verification
       await user.sendEmailVerification();
 
-      Login(userData.schoolMail);
+      // Set message for user to verify their email
+      setError(`Verification email sent to ${schoolMail}. Please verify your email before logging in.`);
 
-      window.location.href = "/candidates";
     } catch (error) {
       console.log(error);
       setError(error.message);
