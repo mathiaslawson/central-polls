@@ -76,6 +76,7 @@ function index() {
 
     //Different Candidate 
     const differentCandidate = () =>{
+         store.dispatch(CandidateDetailsAction(null))
          window.location.href = "/candidates"
     }
 

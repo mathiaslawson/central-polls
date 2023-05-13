@@ -31,10 +31,20 @@ class LoginInContainer extends Component {
     console.log(this.props);
     const { email, password } = this.state;
 
+    const presidentVote = false;
+    const organizerVote = false;
+
     firebase
       .signIn(email, password)
       .then((success) => {
         const user = success.user;
+
+        // standby......
+        // const vote_user = [
+        //   email, 
+        //   presidentVote, 
+        //   organizerVote
+        // ]
 
         store.dispatch(LoginAction(email));
         window.location.href = "./candidates";

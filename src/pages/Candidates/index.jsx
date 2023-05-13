@@ -39,13 +39,30 @@ function Candidates({ candidates, onClick }) {
        
       </Box>
 
+      {/* By Position Starts here */}
+
+      <Box display='grid' justifyContent='center' marginTop='5rem'>
+      <Typography variant='h3' textAlign='center' fontWeight='light'>
+          Position - President
+         
+        </Typography>
+      </Box>
+
+
       {/* Candidates */}
-      <Box display='flex' justifyContent='center' marginTop='2rem'>
+     { 
+     
+     <Box display='flex' justifyContent='center' marginTop='2rem'>
         <Box width='95%' display='flex' padding='1rem' justifyContent='space-evenly' flexWrap='wrap' gap='2rem'>
           {/* Candidate Component */}
 
-          {candidates.map((candidate) => (
-            <Box display='grid' textAlign='center' key={candidate.candidateName}>
+          {candidates.map((candidate) => ( 
+            
+          <>
+           { 
+           candidate.candidatePosition === 'President' ? 
+           <Box display='grid' textAlign='center' key={candidate.candidateName}>
+            
               <Box>
                 <RoundedAvatar />
               </Box>
@@ -69,10 +86,69 @@ function Candidates({ candidates, onClick }) {
                   View Candidate Details
                 </button>
               </Box>
-            </Box>
+            </Box> : ''
+            } 
+            </>
           ))}
         </Box>
       </Box>
+      
+      }
+
+
+
+{/* By Position Starts here */}
+
+      <Box display='grid' justifyContent='center' marginTop='5rem'>
+      <Typography variant='h3' textAlign='center' fontWeight='light'>
+          Position - Organizers
+         
+        </Typography>
+      </Box>
+     { 
+     
+     <Box display='flex' justifyContent='center' marginTop='2rem'>
+        <Box width='95%' display='flex' padding='1rem' justifyContent='space-evenly' flexWrap='wrap' gap='2rem'>
+          {/* Candidate Component */}
+
+          {candidates.map((candidate) => ( 
+            
+          <>
+           { 
+           candidate.candidatePosition === 'Organizer' ? 
+           <Box display='grid' textAlign='center' key={candidate.candidateName}>
+            
+              <Box>
+                <RoundedAvatar />
+              </Box>
+              <Box>{candidate.candidateName}</Box>
+              <Typography fontWeight='bolder'>{candidate.candidatePosition}</Typography>
+              <Box>
+                <button
+                  style={{
+                    width: 'max-content',
+                    border: 'none',
+                    backgroundColor: 'brown',
+                    color: 'white',
+                    borderRadius: '0.4rem',
+                    padding: '0.5rem',
+                    marginTop: '0.9rem',
+                    cursor: 'pointer',
+                  }}
+                  onClick={onClick}
+                  id={candidate.candidateName}
+                >
+                  View Candidate Details
+                </button>
+              </Box>
+            </Box> : ''
+            } 
+            </>
+          ))}
+        </Box>
+      </Box>
+      
+      }
     </>
   )
 }

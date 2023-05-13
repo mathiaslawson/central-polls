@@ -3,6 +3,7 @@ import Candidates from '../../pages/Candidates'
 import Firebase from '../../services'
 import { store } from '../../store'
 import CandidateDetailsAction from '../../actions/CandidateDetails'
+import Login from '../../actions/Login'
 import Vote from '../../actions/Vote'
 
 function index() {
@@ -10,6 +11,7 @@ function index() {
     const [candidates, setCandidates] = useState([])
 
     useEffect(()=>{
+
         const firebase = new Firebase()
         const collection = firebase.db.collection('candidates')
         const  candidates = collection.onSnapshot((querySnapshot)=>{
@@ -30,7 +32,6 @@ function index() {
          const  candidates = await candidateRef.onSnapshot((querySnapshot)=>{
             const data =  querySnapshot.docs.map((doc)=> doc.data());
             setCandidates(data)
-
           
             const candidateID = e.target.id
             try {
@@ -38,12 +39,10 @@ function index() {
                       if (detail.candidateName === candidateID) {
                         const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience, voteCount} = detail
 
-                       
-
+               
                         // const {experienceDuration, experiencePosition} = candidateExperience
 
                         //Query Doc ID
-
                         firebase.db.collection('candidates').where('candidateName', '==', candidateName).get()
                         .then((querySnapshot)=>{
                            if(!querySnapshot.empty){
@@ -58,15 +57,12 @@ function index() {
                             candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel, voteCount
                         }
 
-
                         console.log(voteCount)
                         //vote global state
                         const vote_detials = {
                            voteCount, candidateName
                         }
-
-                     
-                        
+                   
                         store.dispatch(Vote(vote_detials)) 
                         store.dispatch(CandidateDetailsAction(new_details))  
 

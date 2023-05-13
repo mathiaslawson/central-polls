@@ -1,4 +1,4 @@
-import { Component, Fragment } from 'react';
+import { Component, Fragment, useEffect } from 'react';
 import Routes from '../../routes';
 import { Login } from '../../actions';
 import { compose } from 'redux'
@@ -6,6 +6,9 @@ import { connect } from 'react-redux'
 import { withFirebase } from '../../services';
 import Navbar from '../../components/Navbar';
 import MainLoader from '../../components/MainLoader'
+import {store} from '../../store'
+
+
 
 
 class App extends Component {
@@ -14,6 +17,10 @@ class App extends Component {
   };
 
   componentDidMount() {
+
+    //safety feature ... lol
+   // store.dispatch(Login(null))
+     
     // Simulate a delay for 4 seconds before loading the app
     setTimeout(() => {
       this.setState({

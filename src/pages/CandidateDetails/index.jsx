@@ -4,7 +4,7 @@ import "./cd.css";
 import RoundedAvatar from "../../components/RoundedAvatar";
 import {Link} from 'react-router-dom'
 
-function index({ details }) {
+function index({ details, goBack }) {
   const smallScreens = useMediaQuery("(min-width:1200px)");
   console.log(details);
 
@@ -12,11 +12,15 @@ function index({ details }) {
     <>
       <Box padding="2rem">
         <Box display="grid">
-          <Box>
+          <Box display='flex' justifyContent='space-between' alignContent='baseline'>
             <Typography variant="h3" fontWeight="600">
               Candidates Profile
             </Typography>
+            <Typography variant="h4" fontWeight="300" style={{cursor: 'pointer'}} onClick={goBack}>
+              Go Back
+            </Typography>
           </Box>
+    
 
           <Box
             display={smallScreens ? "flex" : "grid"}

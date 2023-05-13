@@ -5,10 +5,11 @@ import { withFirebase } from "../../services";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import Firebase from "../../services";
+import {store} from '../../store'
 
 const firebaseInstance = new Firebase();
 
-function RegisterContainer({ Login }) {
+function RegisterContainer() {
   const [details, setDetails] = useState({});
   const [error, setError] = useState(null);
 
@@ -43,20 +44,25 @@ function RegisterContainer({ Login }) {
 
       const departmentFieldValue = department ? department : "";
 
+      const presidentVote = false;
+      const organizerVote = false;
+
       const userData = {
         indexNumber,
         department: departmentFieldValue,
         schoolMail,
-      };
+        presidentVote,
+        organizerVote,
+      }
 
-    //  await firebaseInstance.addUser(user.uid, userData);
+      await firebaseInstance.addUser(user.uid, userData);
 
       // Send email verification
       await user.sendEmailVerification();
 
-      // Set message for user to verify their email
-      setError(`Verification email sent to ${schoolMail}. Please verify your email before logging in.`);
+      store.dispatch(Login(userData.schoolMail));
 
+      window.location.href = "/candidates";
     } catch (error) {
       console.log(error);
       setError(error.message);
