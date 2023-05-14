@@ -6,13 +6,14 @@ import ban from './ban.jpg'
 import Loader from '../../components/Loader'
 import RoundedAvatar from '../../components/RoundedAvatar'
 
-function Candidates({ candidates, onClick }) {
+function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident }) {
   const [loading, setLoading] = useState(false);
+
+  
 
   useEffect(() => {
     setLoading(true);
     // simulate a delay for fetching data
-
   
     if(candidates.length !== 0){
       setLoading(false)
@@ -41,12 +42,20 @@ function Candidates({ candidates, onClick }) {
 
       {/* By Position Starts here */}
 
+     { disabledOrganizer === 'false' ? 
+
       <Box display='grid' justifyContent='center' marginTop='5rem'>
       <Typography variant='h3' textAlign='center' fontWeight='light'>
           Position - President
          
         </Typography>
+      </Box> : 
+      <Box display='grid' justifyContent='center' marginTop='5rem'>
+        <Typography variant='h3' textAlign='center' fontWeight='bold' color='#8cbf1c'>
+        Vote For Presidential Sent. ✔
+        </Typography>
       </Box>
+     }
 
 
       {/* Candidates */}
@@ -60,7 +69,7 @@ function Candidates({ candidates, onClick }) {
             
           <>
            { 
-           candidate.candidatePosition === 'President' ? 
+           candidate.candidatePosition === 'President' && disabledPresident === 'false' ? 
            <Box display='grid' textAlign='center' key={candidate.candidateName}>
             
               <Box>
@@ -70,6 +79,7 @@ function Candidates({ candidates, onClick }) {
               <Typography fontWeight='bolder'>{candidate.candidatePosition}</Typography>
               <Box>
                 <button
+                disabled={disabledPresident}
                   style={{
                     width: 'max-content',
                     border: 'none',
@@ -95,16 +105,26 @@ function Candidates({ candidates, onClick }) {
       
       }
 
+      
+
 
 
 {/* By Position Starts here */}
 
-      <Box display='grid' justifyContent='center' marginTop='5rem'>
-      <Typography variant='h3' textAlign='center' fontWeight='light'>
-          Position - Organizers
-         
-        </Typography>
-      </Box>
+{ disabledOrganizer === 'false' ? 
+
+<Box display='grid' justifyContent='center' marginTop='5rem'>
+<Typography variant='h3' textAlign='center' fontWeight='light'>
+    Position - Organizer
+   
+  </Typography>
+</Box> : 
+<Box display='grid' justifyContent='center' marginTop='5rem'>
+  <Typography variant='h3' textAlign='center' fontWeight='bold' color='#8cbf1c'>
+  Vote For Organizer Sent. ✔
+  </Typography>
+</Box>
+}
      { 
      
      <Box display='flex' justifyContent='center' marginTop='2rem'>
@@ -115,7 +135,7 @@ function Candidates({ candidates, onClick }) {
             
           <>
            { 
-           candidate.candidatePosition === 'Organizer' ? 
+           candidate.candidatePosition === 'Organizer' && disabledOrganizer === 'false' ? 
            <Box display='grid' textAlign='center' key={candidate.candidateName}>
             
               <Box>
@@ -125,6 +145,7 @@ function Candidates({ candidates, onClick }) {
               <Typography fontWeight='bolder'>{candidate.candidatePosition}</Typography>
               <Box>
                 <button
+                disabled={disabledOrganizer}
                   style={{
                     width: 'max-content',
                     border: 'none',

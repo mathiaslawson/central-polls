@@ -2,8 +2,8 @@ import {CLOSE_POSITION} from '../constants/actionTypes'
 
 
 const INITIAL_STATE = {
-    positionStatus: true,
-    position: null
+    presidentVote : null,
+    organizerVote : null,
 }
 
 

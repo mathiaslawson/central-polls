@@ -44,12 +44,16 @@ function index() {
        const candidateDoc = querySnapshot.docs[0];
       //  console.log(candidateDoc.id);
       //  setDocID(candidateDoc.id);
+
+      store.dispatch(ClosePosition({presidentVote: true}))
  
        // Update Firestore vote status document
        await firebase.db.collection('users').doc(candidateDoc.id).update({
          presidentVote: true,
        });
 
+      
+       
        console.log('Close success');
      } else {
        console.log('No id found with name');
@@ -83,6 +87,9 @@ function index() {
        const candidateDoc = querySnapshot.docs[0];
       //  console.log(candidateDoc.id);
       //  setDocID(candidateDoc.id);
+
+      store.dispatch(ClosePosition({organizerVote: true}))
+ 
  
        // Update Firestore vote status document
        await firebase.db.collection('users').doc(candidateDoc.id).update({

@@ -9,20 +9,61 @@ import Vote from '../../actions/Vote'
 function index() {
 
     const [candidates, setCandidates] = useState([])
+    const [disabledPresident, setDisabledPresident] = useState(false)
+    const [disabledOrganizer, setDisabledOrganizer] = useState(false)
 
     useEffect(()=>{
+
+      // const closePresident = store.getState().closePosition.position.presidentVote
+      // const closeOrganizer = store.getState().closePosition.position.organizerVote
+
+   
 
         const firebase = new Firebase()
         const collection = firebase.db.collection('candidates')
         const  candidates = collection.onSnapshot((querySnapshot)=>{
            const data = querySnapshot.docs.map((doc)=> doc.data());
            setCandidates(data)
+        
+
+
+          specify()
           
         })
         return () => {
            candidates()
         }
+   
       }, [])
+
+
+      const specify = async () => {
+         const firebase = new Firebase();
+         const userMail = store.getState().auth.user;
+       
+         // Query User by Email
+         const userSnapshot = await firebase.db.collection('users').where('schoolMail', '==', userMail).get();
+       
+         if (!userSnapshot.empty) {
+           const userDoc = userSnapshot.docs[0];
+           const userData = userDoc.data();
+       
+           // Get Specific Fields from User Data
+      
+           const {organizerVote, presidentVote} = userData
+          
+           setDisabledOrganizer(organizerVote);
+           setDisabledPresident(presidentVote)
+       
+           // Do Something with the Data
+           // ...
+         } else {
+           console.log('No user found with email:', userMail);
+         }
+       };
+
+
+
 
 
       const fetchCandidateData = async (e) => {
@@ -38,8 +79,7 @@ function index() {
                    data.map((detail)=>{
                       if (detail.candidateName === candidateID) {
                         const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience, voteCount} = detail
-
-               
+         
                         // const {experienceDuration, experiencePosition} = candidateExperience
 
                         //Query Doc ID
@@ -66,7 +106,7 @@ function index() {
                         store.dispatch(Vote(vote_detials)) 
                         store.dispatch(CandidateDetailsAction(new_details))  
 
-                        
+               
 
                         window.location.href='./candidate-details'       
 
@@ -86,7 +126,7 @@ function index() {
 
   return (
     <>
-      <Candidates candidates={candidates} onClick={fetchCandidateData}/>
+      <Candidates candidates={candidates} onClick={fetchCandidateData} disabledPresident={disabledPresident} disabledOrganizer={disabledOrganizer}/>
     
     </>
   )
