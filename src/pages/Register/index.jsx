@@ -83,8 +83,8 @@ function Index({onSubmit, onChange, department, error}) {
             <input
             required
               onChange={onChange}
-              // pattern="^[a-zA-Z0-9._%+-]+@central\.edu\.gh$"
-              // title='Please enter a valid email address ending in central.edu.gh'
+              pattern="^[a-zA-Z0-9._%+-]+@central\.edu\.gh$"
+              title='Please enter a valid email address ending in central.edu.gh'
               name='schoolMail'
               id='schoolMail'
               placeholder='Enter your student e-mail'
