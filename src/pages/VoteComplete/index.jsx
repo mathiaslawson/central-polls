@@ -42,8 +42,8 @@ function index() {
   
      if (!querySnapshot.empty && position === 'President') {
        const candidateDoc = querySnapshot.docs[0];
-      //  console.log(candidateDoc.id);
-      //  setDocID(candidateDoc.id);
+       console.log(candidateDoc.id);
+       // setDocID(candidateDoc.id);
 
       store.dispatch(ClosePosition({presidentVote: true}))
  
@@ -59,7 +59,7 @@ function index() {
        console.log('No id found with name');
      }
    } catch (error) {
-     console.log('Error while updating president count: ', error);
+     console.log('Error while updating president Vote: ', error);
    }
   }
 

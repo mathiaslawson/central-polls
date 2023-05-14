@@ -9,12 +9,13 @@ import RoundedAvatar from '../../components/RoundedAvatar'
 function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident }) {
   const [loading, setLoading] = useState(false);
 
-  
+
 
   useEffect(() => {
     setLoading(true);
     // simulate a delay for fetching data
-  
+    
+
     if(candidates.length !== 0){
       setLoading(false)
     }
@@ -27,6 +28,7 @@ function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident 
   if (loading) {
     return <Loader />;
   }
+
 
   return (
     <>
@@ -42,7 +44,7 @@ function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident 
 
       {/* By Position Starts here */}
 
-     { disabledOrganizer === 'false' ? 
+     { disabledPresident === false ? 
 
       <Box display='grid' justifyContent='center' marginTop='5rem'>
       <Typography variant='h3' textAlign='center' fontWeight='light'>
@@ -69,7 +71,7 @@ function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident 
             
           <>
            { 
-           candidate.candidatePosition === 'President' && disabledPresident === 'false' ? 
+           candidate.candidatePosition === 'President' && disabledPresident === false ? 
            <Box display='grid' textAlign='center' key={candidate.candidateName}>
             
               <Box>
@@ -111,7 +113,7 @@ function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident 
 
 {/* By Position Starts here */}
 
-{ disabledOrganizer === 'false' ? 
+{ disabledOrganizer === false ? 
 
 <Box display='grid' justifyContent='center' marginTop='5rem'>
 <Typography variant='h3' textAlign='center' fontWeight='light'>
@@ -135,7 +137,7 @@ function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident 
             
           <>
            { 
-           candidate.candidatePosition === 'Organizer' && disabledOrganizer === 'false' ? 
+           candidate.candidatePosition === 'Organizer' && disabledOrganizer === false ? 
            <Box display='grid' textAlign='center' key={candidate.candidateName}>
             
               <Box>

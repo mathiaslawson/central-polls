@@ -9,61 +9,59 @@ import Vote from '../../actions/Vote'
 function index() {
 
     const [candidates, setCandidates] = useState([])
-    const [disabledPresident, setDisabledPresident] = useState(false)
-    const [disabledOrganizer, setDisabledOrganizer] = useState(false)
+    const [disabledPresident, setDisabledPresident] = useState(true)
+    const [disabledOrganizer, setDisabledOrganizer] = useState(true)
+
 
     useEffect(()=>{
-
+     
+    
       // const closePresident = store.getState().closePosition.position.presidentVote
       // const closeOrganizer = store.getState().closePosition.position.organizerVote
-
-   
-
         const firebase = new Firebase()
         const collection = firebase.db.collection('candidates')
         const  candidates = collection.onSnapshot((querySnapshot)=>{
            const data = querySnapshot.docs.map((doc)=> doc.data());
-           setCandidates(data)
-        
-
-
-          specify()
-          
+           setCandidates(data)   
+                    
         })
+   
         return () => {
            candidates()
         }
-   
+        
       }, [])
 
 
-      const specify = async () => {
-         const firebase = new Firebase();
-         const userMail = store.getState().auth.user;
+
+      const firebase = new Firebase()
+      const userMail = store.getState().auth.user;
        
-         // Query User by Email
-         const userSnapshot = await firebase.db.collection('users').where('schoolMail', '==', userMail).get();
+      // Query User by Email
+      firebase.db.collection('users').where('schoolMail', '==', userMail).get().then(userSnapshot => {
+        if (!userSnapshot.empty) {
+          const userDoc = userSnapshot.docs[0];
+          const userData = userDoc.data();
+    
+          // Get Specific Fields from User Data
+          const {organizerVote, presidentVote} = userData;
+         // console.log(organizerVote, presidentVote, 1);
        
-         if (!userSnapshot.empty) {
-           const userDoc = userSnapshot.docs[0];
-           const userData = userDoc.data();
-       
-           // Get Specific Fields from User Data
-      
-           const {organizerVote, presidentVote} = userData
-          
-           setDisabledOrganizer(organizerVote);
-           setDisabledPresident(presidentVote)
-       
-           // Do Something with the Data
-           // ...
-         } else {
-           console.log('No user found with email:', userMail);
-         }
-       };
+   
+          // Do Something with the Data
+          // ...
+
+          setDisabledOrganizer(organizerVote)
+          setDisabledPresident(presidentVote)
+
+          console.log(presidentVote, organizerVote)
+        } else {
+          console.log('No user found with email:', userMail);
+        }
+      });
 
 
-
+      console.log(disabledOrganizer, disabledPresident, 'abeg')
 
 
       const fetchCandidateData = async (e) => {

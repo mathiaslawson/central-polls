@@ -63,7 +63,8 @@ function Index({onSubmit, onChange, department, error}) {
             <input
             required
               onChange={onChange}
-              pattern='^CSC\/\d{2}\/\d{2}\/\d{4}$'
+              pattern='^[A-Z]{3}\/\d{2}\/\d{2}\/\d{4}$
+              '
               title='Please enter valid index number, eg.CSC/**/**/****'
               name='indexNumber'
               id='indexNumber'

@@ -14,14 +14,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//uc?export=view&id= code for embbeding in react
+
 function RoundedAvatar() {
   const classes = useStyles();
 
   return (
     <Avatar
     style={{marginLeft: '1.5rem'}}
-      alt="Profile Picture"
-      src={pp}
+      alt=""
+      src='https://drive.google.com/uc?export=view&id=18Uoqp5xNf9VsmO5zlzQZ1B_esZ21MX_G'
       className={classes.avatar}
     />
   );
