@@ -45,7 +45,7 @@ function index({ details, goBack }) {
                       marginLeft={smallScreens? '2rem': '0.7rem'}
                       >
                       </Box> */}
-              <RoundedAvatar />
+              <RoundedAvatar src={details.imgUrl}/>
               <Box marginTop={smallScreens ? "2rem" : "2rem"}>
                 <Typography textAlign="center" variant="h5" fontWeight="600">
                   {" "}

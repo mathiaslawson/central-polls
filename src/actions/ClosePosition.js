@@ -8,3 +8,4 @@ const ClosePosition = (position) => {
 }
 
 export default ClosePosition
+

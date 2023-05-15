@@ -76,7 +76,7 @@ function index() {
             try {
                    data.map((detail)=>{
                       if (detail.candidateName === candidateID) {
-                        const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience, voteCount} = detail
+                        const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience, voteCount, imgUrl} = detail
          
                         // const {experienceDuration, experiencePosition} = candidateExperience
 
@@ -92,7 +92,7 @@ function index() {
                         })
                          
                         const new_details = {
-                            candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel, voteCount
+                            candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel, voteCount, imgUrl
                         }
 
                         console.log(voteCount)

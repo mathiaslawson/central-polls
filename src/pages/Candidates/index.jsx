@@ -9,7 +9,7 @@ import RoundedAvatar from '../../components/RoundedAvatar'
 function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident }) {
   const [loading, setLoading] = useState(false);
 
-
+console.log(candidates)
 
   useEffect(() => {
     setLoading(true);
@@ -75,7 +75,7 @@ function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident 
            <Box display='grid' textAlign='center' key={candidate.candidateName}>
             
               <Box>
-                <RoundedAvatar />
+                <RoundedAvatar src={candidate.imgUrl}/>
               </Box>
               <Box>{candidate.candidateName}</Box>
               <Typography fontWeight='bolder'>{candidate.candidatePosition}</Typography>
@@ -141,7 +141,7 @@ function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident 
            <Box display='grid' textAlign='center' key={candidate.candidateName}>
             
               <Box>
-                <RoundedAvatar />
+                <RoundedAvatar src={candidate.imgUrl}/>
               </Box>
               <Box>{candidate.candidateName}</Box>
               <Typography fontWeight='bolder'>{candidate.candidatePosition}</Typography>
