@@ -9,7 +9,6 @@ function index({onSubmit, onChange, error, success}) {
       variant="outlined"
       margin="normal"
       required
-      fullWidth
       id="email"
       label="Work Email Address"
       name="email"
@@ -18,7 +17,7 @@ function index({onSubmit, onChange, error, success}) {
       onChange= {onChange}    
       >
       </input>
-      <button>Submit</button>
+      <button>Submits</button>
       {error}
       {success}
       </form>

@@ -9,13 +9,16 @@ import CandidatesContainer from '../containers/CandidatesContainer';
 import CandidateDetialsContainer from '../containers/CandidateDetailsContainer'
 import VoteContainer from '../containers/VoteContainer'
 import VoteComplete from '../pages/VoteComplete'
-
+import ConfirmPasswordContainer from '../containers/ConfirmPasssword'
+import Results from '../pages/Results'
 
 
 
 const Routes = () => {
   return (
     <Switch>
+      <PublicRoute path='/confirm' component={ConfirmPasswordContainer}></PublicRoute>
+      <PrivateRoute path='/results' component={Results}></PrivateRoute>
       <PrivateRoute path={ROUTES.VOTE_COMPLETE} component={VoteComplete}></PrivateRoute>
       <PrivateRoute path={ROUTES.VOTE} component={VoteContainer}></PrivateRoute>
       <PrivateRoute path={ROUTES.CANDIDATES_DETAILS} component={CandidateDetialsContainer}></PrivateRoute>

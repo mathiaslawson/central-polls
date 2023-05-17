@@ -5,6 +5,7 @@ import Logout from '../../actions/Logout'
 import ban from './ban.jpg'
 import Loader from '../../components/Loader'
 import RoundedAvatar from '../../components/RoundedAvatar'
+import {Link} from 'react-router-dom'
 
 function Candidates({ candidates, onClick, disabledOrganizer, disabledPresident }) {
   const [loading, setLoading] = useState(false);
@@ -32,6 +33,24 @@ console.log(candidates)
 
   return (
     <>
+    <Box marginLeft='1rem' marginTop='1rem'>
+      <Link to='/results'>
+      <button
+       style={{
+        border: 'none',
+        borderRadius: '1rem',
+        padding: '0.5rem',
+        borderStyle: 'solid',
+        borderColor: 'brown',
+        borderWidth: '0.1rem',
+        backgroundColor: 'white',
+        cursor: 'pointer'
+       }}
+      >
+          View Results
+      </button>
+      </Link>
+    </Box>
       
       {/* Header */}
       <Box marginTop='2rem'>

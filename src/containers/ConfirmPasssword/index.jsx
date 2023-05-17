@@ -17,10 +17,13 @@ class ConfirmPasswordContainer extends Component{
 
     handleChange = (e) =>{
         this.setState({[e.target.name]: e.target.value})
+       // console.log(this.state.email)
     }
 
     handleSubmit = async (e) =>{
         e.preventDefault() 
+
+        console.log('change')
 
         const {email} = this.state
         console.log(email)

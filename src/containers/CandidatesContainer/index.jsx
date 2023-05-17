@@ -15,9 +15,6 @@ function index() {
 
     useEffect(()=>{
      
-    
-      // const closePresident = store.getState().closePosition.position.presidentVote
-      // const closeOrganizer = store.getState().closePosition.position.organizerVote
         const firebase = new Firebase()
         const collection = firebase.db.collection('candidates')
         const  candidates = collection.onSnapshot((querySnapshot)=>{
@@ -77,7 +74,8 @@ function index() {
                    data.map((detail)=>{
                       if (detail.candidateName === candidateID) {
                         const {candidateName, candidateDepartment, candidatePosition,  candidatePromises, candidateLevel, candidateExperience, voteCount, imgUrl} = detail
-         
+
+         //coming soon .. added feature
                         // const {experienceDuration, experiencePosition} = candidateExperience
 
                         //Query Doc ID
@@ -87,7 +85,7 @@ function index() {
                               const candidateDoc = querySnapshot.docs[0]
                               console.log(candidateDoc.id)
                            }else{
-                              console.log("eyy")
+                              console.log("Doc Id not found")
                            }
                         })
                          
@@ -95,7 +93,7 @@ function index() {
                             candidateName, candidateDepartment, candidatePosition, candidatePromises, candidateLevel, voteCount, imgUrl
                         }
 
-                        console.log(voteCount)
+                      
                         //vote global state
                         const vote_detials = {
                            voteCount, candidateName
