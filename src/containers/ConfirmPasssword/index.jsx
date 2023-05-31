@@ -1,57 +1,66 @@
-import React, {Component} from 'react'
-import { compose } from 'redux';
-import {connect} from 'react-redux'
-import {Login} from '../../actions'
-import {withFirebase} from '../../services/index'
-import ConfirmPassword from '../../pages/ConfirmPassword'
-import {getAuth, GoogleAuthProvider, sendPasswordResetEmail, signInWithPopup, sendSignInLinkToEmail, sendEmailVerification} from 'firebase/auth'
-import {doc, setDoc, getDoc, serverTimestamp} from 'firebase/firestore'
-import { getFirestore } from 'firebase/firestore';
+import React, { Component } from 'react';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
+import ConfirmPassword from '../../pages/ConfirmPassword';
 
-class ConfirmPasswordContainer extends Component{
-    state = {
-        email: '',
-        error: ``,
-        success: ``
+class ConfirmPasswordContainer extends Component {
+  state = {
+    email: '',
+    error: '',
+    success: '',
+  };
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { email } = this.state;
+
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+
+      this.setState({
+        success: `A password reset link has been sent to ${email}. Please check your email.`,
+        error: '',
+      });
+    } catch (error) {
+      let errorMessage = 'An error occurred. Please try again later.';
+
+      // Handle specific error cases
+      switch (error.code) {
+        case 'auth/invalid-email':
+          errorMessage = 'Invalid email address. Please enter a valid email.';
+          break;
+        case 'auth/user-not-found':
+          errorMessage =
+            'No user found with the provided email. Please check your email address.';
+          break;
+        default:
+          console.log(error);
+      }
+
+      this.setState({
+        error: errorMessage,
+        success: '',
+      });
     }
+  };
 
-    handleChange = (e) =>{
-        this.setState({[e.target.name]: e.target.value})
-       // console.log(this.state.email)
-    }
+  render() {
+    const { success, error } = this.state;
 
-    handleSubmit = async (e) =>{
-        e.preventDefault() 
-
-        console.log('change')
-
-        const {email} = this.state
-        console.log(email)
-        
-        try {
-            const auth = getAuth()
-            await sendPasswordResetEmail(auth, email)
-            
-            this.setState({
-                success: `Reset link sent to ${email}`
-            })
-          } catch (error) {
-            console.log(error)
-            this.setState({
-                error: `Email not Sent, Try again after some few minutes`
-            })
-          }
-    }
-
-   
-
-    render(){
-        return <ConfirmPassword onChange={this.handleChange} onSubmit={this.handleSubmit}  success={this.state.success} error={this.state.error}/>
-    }
+    return (
+      <ConfirmPassword
+        onChange={this.handleChange}
+        onSubmit={this.handleSubmit}
+        success={success}
+        error={error}
+      />
+    );
+  }
 }
 
-export default compose(
-    connect(
-        null, {Login}
-    ), withFirebase
-)(ConfirmPasswordContainer)
+export default ConfirmPasswordContainer;

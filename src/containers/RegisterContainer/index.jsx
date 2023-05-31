@@ -57,12 +57,9 @@ function RegisterContainer() {
 
       await firebaseInstance.addUser(user.uid, userData);
 
-      // Send email verification
-      await user.sendEmailVerification();
+      //store.dispatch(Login(userData.schoolMail));
 
-      store.dispatch(Login(userData.schoolMail));
-
-      window.location.href = "/candidates";
+      window.location.href = "/confirm";
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -81,4 +78,4 @@ function RegisterContainer() {
   );
 }
 
-export default compose(connect(null, { Login }), withFirebase)(RegisterContainer);
+export default RegisterContainer;
