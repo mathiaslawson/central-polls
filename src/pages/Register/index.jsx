@@ -1,9 +1,10 @@
 import { Box, useMediaQuery, Typography, FormControl, MenuItem, Select } from '@mui/material';
 import register from './register.png'
 import { useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress'
 
 
-function Index({onSubmit, onChange, department, error}) {
+function Index({onSubmit, onChange, department, error, usererror}) {
 
   const smallScreens = useMediaQuery('(min-width: 1200px)')
 
@@ -23,7 +24,7 @@ function Index({onSubmit, onChange, department, error}) {
   ]
 
   const [selected, setSelected] = useState(depts[0].value)
- 
+  const [isLoading, setIsLoading] = useState(false);
 
 
   return (
@@ -125,7 +126,7 @@ function Index({onSubmit, onChange, department, error}) {
               </Select>
             </FormControl>
 
-            <input
+            {/* <input
             required
                onChange={onChange}
               name='password'
@@ -141,8 +142,8 @@ function Index({onSubmit, onChange, department, error}) {
                 borderWidth: '0.02rem'
               }}
             >
-            </input>
-
+            </input> */}
+{/* 
             <input
             required
               onChange={onChange}
@@ -159,18 +160,38 @@ function Index({onSubmit, onChange, department, error}) {
                 borderWidth: '0.02rem'
               }}
             >
-            </input>
+            </input> */}
 
-
-            <Typography color='red'>{error}.</Typography>
+            <Typography color='red'>{usererror}</Typography>
+            <Typography color='red'>{error}</Typography>
+            
             
 
             {/* <Typography textTransform='capitalize' textAlign='center'>by clicking the sign in button</Typography>
             <Typography textTransform='capitalize' textAlign='center' color='rgb(140,31,31)' marginTop='-2rem'>terms and conditions</Typography> */}
 
-            <button style={{padding: '0.9rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
-              Register
-            </button>
+<button
+  style={{
+    padding: '0.9rem',
+    border: 'none',
+    borderRadius: '0.5rem',
+    color: 'white',
+    backgroundColor: 'rgb(140,31,31)',
+    cursor: 'pointer',
+    position: 'relative' // Add position relative to parent container
+  }}
+  disabled={isLoading} // Disable the button while loading
+>
+  {isLoading ? (
+    <CircularProgress
+      size={24}
+      color="inherit"
+      style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+    />
+  ) : (
+    'Register'
+  )}
+</button>
 
 
 
