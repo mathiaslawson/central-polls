@@ -1,9 +1,8 @@
-import React, { Component, useState } from "react";
+import { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { Login as LoginAction } from "../../actions";
 import { withFirebase } from "../../services/index";
-import { withRouter } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import Login from "../../pages/Login";
@@ -26,6 +25,7 @@ class LoginInContainer extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
 
     const { firebase, SignInAction } = this.props;
     console.log(this.props);

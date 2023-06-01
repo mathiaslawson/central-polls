@@ -1,11 +1,6 @@
 import { useState } from "react";
 import Register from "../../pages/Register";
-import { Login } from "../../actions";
-import { withFirebase } from "../../services";
-import { compose } from "redux";
-import { connect } from "react-redux";
 import Firebase from "../../services";
-import {store} from '../../store'
 import users from '../../data/users'
 
 const firebaseInstance = new Firebase();
@@ -51,7 +46,7 @@ function RegisterContainer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { schoolMail, password, indexNumber, department } = details;
+    const { schoolMail, indexNumber, department } = details;
 
     try {
       //check user data
@@ -100,7 +95,7 @@ function RegisterContainer() {
       window.location.href = "/confirm";
     } catch (error) {
       console.log(error);
-      setError(error.message);
+      setError('An error occurred while processing your registration. Please try again.');
     }
   };
 
