@@ -7,8 +7,8 @@ const firebaseInstance = new Firebase();
 
 function RegisterContainer() {
   const [details, setDetails] = useState({});
-  const [error, setError] = useState('');
-  const [usererror, setuserError] = useState('');
+  const [error, setError] = useState(null);
+  const [usererror, setuserError] = useState(null);
 
 
 //generate random password
@@ -93,7 +93,10 @@ function RegisterContainer() {
   
       // Additional actions after successful registration
       //store.dispatch(Login(userData.schoolMail));
-  
+
+      if(usererror === 'Index number and mail confirmation complete' && error !== null){
+        return window.location.href = "/confirm";
+      }
       //window.location.href = "/confirm";
     } catch (error) {
       console.log(error);
