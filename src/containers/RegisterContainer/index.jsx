@@ -45,59 +45,62 @@ function RegisterContainer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const { schoolMail, indexNumber, department } = details;
-
+  
     try {
-      //check user data
-      users.map((user)=>{
-        if(indexNumber === user.id  && schoolMail === user.mail){
-           setError('')
-           
-        }else{
-           setuserError(`The index ${indexNumber} does not belong to ${schoolMail}`)
-        }
-      })
-
+      // Check if the provided index number and school mail match any user data
+      const userExists = users.some((user) => {
+        setuserError(`Index number and mail confirmation complete`)
+        return user.id === indexNumber && user.mail === schoolMail;
+      });
+  
+      if (!userExists) {
+        setuserError(`The index ${indexNumber} does not belong to ${schoolMail}`);
+        return;
+      }
+  
       // Check if user already exists with the same school mail
       const querySnapshot = await firebaseInstance.db
         .collection("users")
         .where("schoolMail", "==", schoolMail)
         .get();
-
+  
       if (!querySnapshot.empty) {
-        // User with same email already exists
-        setError("User with same email already exists");
+        // User with the same email already exists
+        setError("User with the same email already exists");
         return;
       }
-
+  
       // Create new user in Firestore
       const userCredential = await firebaseInstance.signUp(schoolMail, randomPassword);
       const user = userCredential.user;
-
+  
       const departmentFieldValue = department ? department : "";
-
+  
       const presidentVote = false;
       const organizerVote = false;
-
+  
       const userData = {
         indexNumber,
         department: departmentFieldValue,
         schoolMail,
         presidentVote,
         organizerVote,
-      }
-
+      };
+  
       await firebaseInstance.addUser(user.uid, userData);
-
+  
+      // Additional actions after successful registration
       //store.dispatch(Login(userData.schoolMail));
-
-      window.location.href = "/confirm";
+  
+      //window.location.href = "/confirm";
     } catch (error) {
       console.log(error);
       setError('An error occurred while processing your registration. Please try again.');
     }
   };
+  
 
   const department = details.department;
 

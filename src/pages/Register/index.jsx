@@ -162,7 +162,7 @@ function Index({onSubmit, onChange, department, error, usererror}) {
             >
             </input> */}
 
-            <Typography color='red'>{usererror}</Typography>
+            <Typography color={usererror === 'Index number and mail confirmation complete' ? 'green' : "red"}>{usererror}</Typography>
             <Typography color='red'>{error}</Typography>
             
             
