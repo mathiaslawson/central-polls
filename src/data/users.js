@@ -5,6 +5,9 @@ const users = [
    { 'id' : 'DPH/20/01/3092',
     'mail' : 'matey.jonathan@central.edu.gh'}
     ,
+   { 'id' : 'CSC/20/01/2709',
+    'mail' : 'ackney.gideon@central.edu.gh'}
+    ,
   
 ];
 
