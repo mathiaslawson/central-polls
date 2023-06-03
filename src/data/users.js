@@ -7,8 +7,6 @@ const users = [
     ,
    { 'id' : 'CSC/20/01/2709',
     'mail' : 'ackney.gideon@central.edu.gh'}
-    ,
-  
 ];
 
 export default users;
