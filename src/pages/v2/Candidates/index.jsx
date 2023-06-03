@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
-import { store } from '../../store'
-import Logout from '../../actions/Logout'
-import Loader from '../../components/Loader'
-import RoundedAvatar from '../../components/RoundedAvatar'
+import { store } from '../../../store'
+import Logout from '../../../actions/Logout'
+import Loader from '../../../components/Loader'
+import RoundedAvatar from '../../../components/RoundedAvatar'
 import {Link} from 'react-router-dom'
 
 function Index({ candidates, onClick, disabledOrganizer, disabledPresident }) {
@@ -194,4 +194,4 @@ console.log(candidates)
   )
 }
 
-export default Index;
+export default Index

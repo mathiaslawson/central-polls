@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import  {useState, useEffect} from 'react'
 import Vote from '../../pages/Vote'
 import Firebase from '../../services';
 import {store} from '../../store'
 import CandidateDetailsAction from '../../actions/CandidateDetails';
-import {withRouter} from 'react-router-dom'
-import { WindowRounded } from '@mui/icons-material';
+
 
 function index() {
     const firebase = new Firebase();
@@ -90,7 +89,10 @@ function index() {
 
   return (
     <>
-      <Vote handleYesClick={handleYesClick} candidateName={info} differentCandidate={differentCandidate}
+      <Vote 
+      handleYesClick={handleYesClick} 
+      candidateName={info} 
+      differentCandidate={differentCandidate}
       goBack = {goBack}
       disabled = {disabled}
       />

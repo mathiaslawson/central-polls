@@ -4,7 +4,6 @@ import {Box, Typography} from '@mui/material'
 
 function index({onSubmit, onChange, error, success, schoolMail}) {
  
-
   return (
     <>
     

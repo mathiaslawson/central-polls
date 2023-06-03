@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import Candidates from '../../pages/Candidates'
-import Firebase from '../../services'
-import { store } from '../../store'
-import CandidateDetailsAction from '../../actions/CandidateDetails'
-import Login from '../../actions/Login'
-import Vote from '../../actions/Vote'
+import Candidates from '../../v2/CandidatesContainer'
+import Firebase from '../../../services'
+import { store } from '../../../store'
+import CandidateDetailsAction from '../../../actions/CandidateDetails'
+import Login from '../../../actions/Login'
+import Vote from '../../../actions/Vote'
 
 function index() {
 
@@ -104,7 +104,7 @@ function index() {
 
                
 
-                        window.location.href='/vote'       
+                        window.location.href='./candidate-details'       
 
                       }else{
                         return false

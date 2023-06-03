@@ -1,7 +1,9 @@
 import { useState } from "react";
+import {Box} from '@mui/material'
 import Register from "../../pages/Register";
 import Firebase from "../../services";
 import users from '../../data/users'
+import ConfirmPassword from '../../pages/ConfirmPassword'
 
 const firebaseInstance = new Firebase();
 
@@ -9,6 +11,7 @@ function RegisterContainer() {
   const [details, setDetails] = useState({});
   const [error, setError] = useState(null);
   const [usererror, setuserError] = useState(null);
+  const [confirm, setConfirm] = useState(false)
 
 
 //generate random password
@@ -93,8 +96,9 @@ function RegisterContainer() {
   
       // Additional actions after successful registration
       //store.dispatch(Login(userData.schoolMail));
-
+     // setConfirm(!confirm)
       if(usererror === 'Index number and mail confirmation complete' && error !== null){
+        
         return window.location.href = "/confirm";
       }
       //window.location.href = "/confirm";
@@ -108,6 +112,10 @@ function RegisterContainer() {
   const department = details.department;
 
   return (
+   <>
+   <Box display="none">
+    <ConfirmPassword confirm={confirm}></ConfirmPassword>
+  </Box>
     <Register
       onChange={handleChange}
       onSubmit={handleSubmit}
@@ -115,6 +123,8 @@ function RegisterContainer() {
       error={error}
       usererror = {usererror}
     />
+
+</>
   );
 }
 

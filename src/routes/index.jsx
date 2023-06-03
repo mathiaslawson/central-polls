@@ -13,6 +13,9 @@ import ConfirmPasswordContainer from '../containers/ConfirmPasssword'
 import TestRegister from '../pages/TestRegister'
 import Results from '../pages/Results'
 
+//v2
+//import CandidatesContainer2 from '../containers/v2/CandidatesContainer'
+
 
 
 const Routes = () => {
