@@ -26,6 +26,18 @@ function Index({onSubmit, onChange, department, error, usererror}) {
   const [selected, setSelected] = useState(depts[0].value)
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleRegister = () => {
+    setIsLoading(true);
+    // Simulating login request delay
+    setTimeout(() => {
+      setIsLoading(false);
+      onSubmit(); // Call the onSubmit function when login is granted
+    }, 5000); // Adjust the delay time as needed
+
+    // You can replace the setTimeout with your actual login request
+    // Make sure to handle success and error cases accordingly
+  };
+
 
   return (
     
@@ -181,16 +193,9 @@ function Index({onSubmit, onChange, department, error, usererror}) {
     position: 'relative' // Add position relative to parent container
   }}
   disabled={isLoading} // Disable the button while loading
+  onClick={handleRegister}
 >
-  {isLoading ? (
-    <CircularProgress
-      size={24}
-      color="inherit"
-      style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
-    />
-  ) : (
-    'Register'
-  )}
+{isLoading ? <CircularProgress size={20} color="inherit" /> : 'Register'} {/* Render loading indicator or 'Register' */}
 </button>
 
 
