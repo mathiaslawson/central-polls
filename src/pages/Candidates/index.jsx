@@ -95,6 +95,7 @@ console.log(candidates)
               <Box>
                 <RoundedAvatar src={candidate.imgUrl}/>
               </Box>
+              <Box marginLeft='1rem' marginTop='1.3rem'>
               <Box>{candidate.candidateName}</Box>
               <Typography fontWeight='bolder'>{candidate.candidatePosition}</Typography>
               <Box>
@@ -115,6 +116,7 @@ console.log(candidates)
                 >
                   Vote
                 </button>
+                </Box>
               </Box>
             </Box> : ''
             } 
@@ -159,8 +161,12 @@ console.log(candidates)
            <Box display='grid' textAlign='center' key={candidate.candidateName}>
             
               <Box>
-                <RoundedAvatar src={candidate.imgUrl}/>
+                {
+                  <RoundedAvatar src={candidate.imgUrl}/>
+                
+                }
               </Box>
+              <Box marginLeft='1rem' marginTop='1.3rem'>
               <Box>{candidate.candidateName}</Box>
               <Typography fontWeight='bolder'>{candidate.candidatePosition}</Typography>
               <Box>
@@ -181,7 +187,8 @@ console.log(candidates)
                 >
                   Vote
                 </button>
-              </Box>
+                </Box>
+              </Box>            
             </Box> : ''
             } 
             </>
