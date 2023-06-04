@@ -24,8 +24,7 @@ class LoginInContainer extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
-
+    //e.preventDefault();
 
     const { firebase, SignInAction } = this.props;
     console.log(this.props);
