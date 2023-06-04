@@ -9,7 +9,7 @@ const firebaseInstance = new Firebase();
 
 function RegisterContainer() {
   const [details, setDetails] = useState({});
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [usererror, setuserError] = useState(null);
   const [confirm, setConfirm] = useState(false)
 
@@ -95,11 +95,11 @@ function RegisterContainer() {
       await firebaseInstance.addUser(user.uid, userData);
   
       // Additional actions after successful registration
-      //store.dispatch(Login(userData.schoolMail));
-     // setConfirm(!confirm)
-      if(usererror === 'Index number and mail confirmation complete' && error !== null){
-        
-        return window.location.href = "/confirm";
+    //store.dispatch(Login(userData.schoolMail));
+     //setConfirm(!confirm)
+      console.log(usererror, error)
+      if(usererror !== 'Index number and mail confirmation complete' && error === ''){
+         window.location.href = "/confirm";
       }
       //window.location.href = "/confirm";
     } catch (error) {
