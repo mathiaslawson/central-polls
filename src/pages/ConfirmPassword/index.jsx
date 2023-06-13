@@ -1,8 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Box, Typography} from '@mui/material'
+import {store} from '../../store'
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
 
-function index({onSubmit, onChange, error, success, schoolMail}) {
+function index({onSubmit, onChange, mail}) {
+
+  const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
+
+  useEffect(()=>{
+     confirm();
+     console.log(store.getState().confirmedEmail.position)
+
+ 
+  }, [])
+
+  const confirm = async ()=> {
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, store.getState().confirmedEmail.position);
+
+      setSuccess(
+         `A password reset link has been sent to ${store.getState().confirmedEmail.position}. Please check your email.`,
+      );
+      setError('')
+    } catch (error) {
+      let errorMessage = 'An error occurred. Please try again later.';
+
+      // Handle specific error cases
+      switch (error.code) {
+        case 'auth/invalid-email':
+          errorMessage = 'Invalid email address. Please enter a valid email.';
+          break;
+        case 'auth/user-not-found':
+          errorMessage =
+            'No user found with the provided email. Please check your email address.';
+          break;
+        default:
+          console.log(error);
+      }
+
+      setError(error)
+    }
+  }
  
   return (
     <>
@@ -18,11 +59,11 @@ function index({onSubmit, onChange, error, success, schoolMail}) {
 
       <Box mt='-2rem'>
       <Typography fontWeight='light' variant='h6' p='1rem'>
-               Enter you school mail and hit the button below, to be able to set your account password and login.
+               A link has been sent to your school mail, kindly login and set your Central Polls account.
         </Typography>
       </Box>
 
-      <Box>
+      {/* <Box>
       <input
       variant="outlined"
       margin="normal"
@@ -46,16 +87,16 @@ function index({onSubmit, onChange, error, success, schoolMail}) {
 
       >
       </input>
-      </Box>
-      <Box>
+      </Box> */}
+      {/* <Box>
       <button style={{padding: '0.6rem', border:'none', borderRadius: '0.5rem', color: 'white', backgroundColor: 'rgb(140,31,31)', cursor: 'pointer'}}>
          Set Password        
       </button>
-      </Box>
+      </Box> */}
       <Box>
-        <Typography color='red'>
+        {/* <Typography color='red'>
         {error}
-        </Typography>
+        </Typography> */}
         <Typography color='green'>
         {success}
         </Typography>

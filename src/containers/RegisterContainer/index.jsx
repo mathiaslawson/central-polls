@@ -3,7 +3,9 @@ import {Box} from '@mui/material'
 import Register from "../../pages/Register";
 import Firebase from "../../services";
 import users from '../../data/users'
+import ConfirmedMail from "../../actions/ConfirmEmail";
 import ConfirmPassword from '../../pages/ConfirmPassword'
+import {store} from '../../store'
 
 const firebaseInstance = new Firebase();
 
@@ -12,6 +14,7 @@ function RegisterContainer() {
   const [error, setError] = useState('');
   const [usererror, setuserError] = useState(null);
   const [confirm, setConfirm] = useState(false)
+  const [mail, setMail] = useState(null)
 
 
 //generate random password
@@ -74,6 +77,8 @@ function RegisterContainer() {
         setError("User with the same email already exists");
         return;
       }
+
+     
   
       // Create new user in Firestore
       const userCredential = await firebaseInstance.signUp(schoolMail, randomPassword);
@@ -99,6 +104,7 @@ function RegisterContainer() {
      //setConfirm(!confirm)
       console.log(usererror, error)
       if(usererror !== 'Index number and mail confirmation complete' && error === ''){
+        store.dispatch(ConfirmedMail(schoolMail))
          window.location.href = "/confirm";
       }
       //window.location.href = "/confirm";
@@ -124,7 +130,9 @@ function RegisterContainer() {
       error={error}
       usererror = {usererror}
     />
-
+    <Box style={{display: 'none'}}>
+    
+    </Box>
 </>
   );
 }
