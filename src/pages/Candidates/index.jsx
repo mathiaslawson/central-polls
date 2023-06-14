@@ -32,7 +32,7 @@ console.log(candidates)
 
   return (
     <>
-    <Box marginLeft='1rem' marginTop='1rem'>
+    {/* <Box marginLeft='1rem' marginTop='1rem'>
       <Link to='/results'>
       <button
        style={{
@@ -50,7 +50,7 @@ console.log(candidates)
       </button>
       </Link>
     </Box>
-      
+       */}
       {/* Header */}
       <Box marginTop='2rem'>
         <Typography variant='h2' textAlign='center' fontWeight='bolder'>
