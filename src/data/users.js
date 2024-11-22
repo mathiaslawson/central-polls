@@ -1,6 +1,6 @@
 const users = [
    { 'id' : 'CSC/20/01/1847',
-    'mail' : 'mathiaslawson@central.edu.gh'}
+    'mail' : 'mathiaslawson70@gmail.com'}
     ,
 
     { 'id' : 'CSC/20/01/2251',
